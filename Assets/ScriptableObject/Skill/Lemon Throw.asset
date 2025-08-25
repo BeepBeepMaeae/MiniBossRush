@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72316acb00261e94b8e3e44ecffc65a9, type: 3}
+  m_Name: Lemon Throw
+  m_EditorClassIdentifier: 
+  skillName: "\uB808\uBAAC\uC9C0"
+  icon: {fileID: -4588854041495768185, guid: fdc844060df777948a1d672fec1882f3, type: 3}
+  description: "\uB808\uBAAC\uC744 \uB358\uC9D1\uB2C8\uB2E4.\n\uB808\uBAAC\uC740
+    10\uCD08\uAC04 \uBC14\uB2E5\uC5D0 \uBD99\uC5B4\uC11C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
+    \uC785\uD799\uB2C8\uB2E4.\n\uCFE8\uD0C0\uC784: 15\uCD08\nSP \uC18C\uBAA8: 20\n\uD53C\uD574\uB7C9:
+    10"
+  cooldown: 15
+  staminaCost: 20
+  lemonPrefab: {fileID: 3442406407373598556, guid: fcdea7daeda6c0141a895887a5cc0c1f, type: 3}
+  launchSpeed: 15
+  damage: 10
+  spawnForwardOffset: 0.6
+  spawnUpOffset: 0.1
+  sfxCast: {fileID: 8300000, guid: 7742f423fd6992e4e92fbd94530f0433, type: 3}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fb57dca20db0d40b1b02df8f65096514
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200208
+  packageName: Warped City 2
+  packageVersion: 1.0
+  assetPath: Assets/Warped City 2/Artwork/Sprites/explosion-a/explosion-a1.controller
+  uploadId: 445758

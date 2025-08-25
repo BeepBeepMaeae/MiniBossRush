@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7684d4b7fd942f4eaec525c182accf2, type: 3}
+  m_Name: White Orb
+  m_EditorClassIdentifier: 
+  skillName: "\uD654\uC774\uD2B8 \uC624\uBE0C"
+  icon: {fileID: 2723176700914664728, guid: d4bcdef4a60db604ea2aebe19b81a402, type: 3}
+  description: "\uD654\uC774\uD2B8 \uC624\uBE0C 6\uAC1C\uB97C \uC18C\uD658\uD569\uB2C8\uB2E4.\n\uD654\uC774\uD2B8
+    \uC624\uBE0C\uB294 \uC18C\uD658 \uB2F9\uC2DC \uBCF4\uC2A4\uC758 \uC704\uCE58\uB85C
+    \uC774\uB3D9\uD569\uB2C8\uB2E4.\n\uCFE8\uD0C0\uC784: 5\uCD08\nSP \uC18C\uBAA8:
+    20\n\uD53C\uD574\uB7C9: \uAC1C\uB2F9 6"
+  cooldown: 5
+  staminaCost: 20
+  bulletPrefab: {fileID: 2374897982878712063, guid: 45d0112db826d734ebd2917ae0d366c9, type: 3}
+  sfxCast: {fileID: 8300000, guid: cf0f0cf12291ad74f930408814fa1799, type: 3}

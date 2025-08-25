@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e63cf8bf3999d40a88efd2257415e92e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200208
+  packageName: Warped City 2
+  packageVersion: 1.0
+  assetPath: Assets/Warped City 2/Artwork/Sprites/Player/Run/Run1.controller
+  uploadId: 445758

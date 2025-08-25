@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1909291050397338753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5420727329242581109}
+  - component: {fileID: 4615426556173677947}
+  m_Layer: 0
+  m_Name: QuizManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5420727329242581109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909291050397338753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4615426556173677947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909291050397338753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f6aa0d530b83245a751ee0866897a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions:
+  - {fileID: 11400000, guid: b55623e05bbf856438dfd7b4f4b9c97a, type: 2}
+  - {fileID: 11400000, guid: 3be847021c8d63a4aa4c98442b50b62a, type: 2}
+  - {fileID: 11400000, guid: 8981f88d015c372419c6bd6d2c2fea34, type: 2}
+  - {fileID: 11400000, guid: a4b53e093da40a94383db82df2085087, type: 2}
+  - {fileID: 11400000, guid: b6ef755e7e7a5ba44b0a747f78910b5d, type: 2}
+  - {fileID: 11400000, guid: 573d33863cc33fe4fbae29b3428c7321, type: 2}
+  - {fileID: 11400000, guid: 602205f4a81c46340ac7ab1d72a353a3, type: 2}
+  - {fileID: 11400000, guid: 42efc1973b99b344399fd1b8fc236437, type: 2}
+  - {fileID: 11400000, guid: e58f4ba8fae344d4aa70887cc4bd95af, type: 2}
+  - {fileID: 11400000, guid: 106199ff4e19d7e49819527ba0bd1b89, type: 2}
+  - {fileID: 11400000, guid: a35031c4426ea714280e16ecdbc35b53, type: 2}
+  forcedQuestion: {fileID: 0}
+  quizUIPrefab: {fileID: 7696882922939043375, guid: 667e4a3db9bb1654e93dee7e061fa1f5, type: 3}
+  timeLimit: 10
+  targetCanvas: {fileID: 0}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642860bb0b36b1d4d9656900f01952fc, type: 3}
+  m_Name: Game15
+  m_EditorClassIdentifier: 
+  questionText: "\uC801\uB3C4 \uBD80\uADFC \uB3D9\uD0DC\uD3C9\uC591\uC758 \uD574\uC218
+    \uC628\uB3C4\uAC00 \uD3C9\uB144\uBCF4\uB2E4 \uB0AE\uC544\uC9C0\uB294 \uD604\uC0C1\uC744
+    \uAC00\uB9AC\uD0A4\uB294 \uC6A9\uC5B4\uB294?"
+  options:
+  - "\uC9C0\uAD6C\uC628\uB09C\uD654"
+  - "\uB77C\uB2C8\uB0D0"
+  - "\uC5D8\uB9AC\uB1E8"
+  - "\uBE14\uB799\uC544\uC6C3"
+  correctIndex: 1

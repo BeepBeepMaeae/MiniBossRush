@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6def0fa90fad140854752c95203139, type: 3}
+  m_Name: "\uCD1D\uC758 \uB300\uAC00"
+  m_EditorClassIdentifier: 
+  title: "\uCD1D\uC758 \uB300\uAC00"
+  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  requireAllMaxToAppear: 0
+  currentLevel: 0
+  levels:
+  - description: "\uCD1D\uC54C\uC774 \uC785\uD788\uB294 \uD53C\uD574\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - description: "\uCD1D\uC54C\uC758 \uD06C\uAE30\uAC00 \uCEE4\uC9D1\uB2C8\uB2E4."
+  - description: "\uCD1D\uC54C\uC758 \uC18D\uB3C4\uAC00 \uBE68\uB77C\uC9D1\uB2C8\uB2E4."
+  - description: "\uD55C \uBC88\uC5D0 \uBC1C\uC0AC\uD558\uB294 \uCD1D\uC54C \uAC1C\uC218\uAC00
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - description: "\uCD1D\uC54C\uC774 \uC785\uD788\uB294 \uD53C\uD574\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."

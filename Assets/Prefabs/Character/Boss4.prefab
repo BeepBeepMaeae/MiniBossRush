@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2910149648681894658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2464281510119793933}
+  - component: {fileID: 1905158567390419520}
+  - component: {fileID: 3965733707096256170}
+  - component: {fileID: 898137302700065738}
+  - component: {fileID: 3708576150234848303}
+  - component: {fileID: 6149928377555196774}
+  m_Layer: 0
+  m_Name: Boss4
+  m_TagString: Boss
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2464281510119793933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.45, y: -3.72, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1905158567390419520
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -7884871775918066208, guid: 3cc1b63344eb9de46bf863a1423503a4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3965733707096256170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06e68b9f386f22478753b64f0939a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 500
+  currentHp: 0
+  hpBar: {fileID: 0}
+  isPlayer: 0
+--- !u!95 &898137302700065738
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72d1ce9fe74c4d84fb9352f7cc60f03e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3708576150234848303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5c4a2e60bdc0f43ae3701da823d6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 5
+  kjwMaxHp: 100
+  kjwHp: 0
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  hamburgerPrefab: {fileID: 8951474125248228603, guid: d7e6fc032b491c049a38b2e4baee7096, type: 3}
+  burgerSpeed: 8
+  burgerLifetime: 4
+  burgerChargeTime: 0.35
+  burgerBrightMul: 2
+  burgerScaleUp: 1.12
+  burgerMoveChance: 0.5
+  burgerSecondVolleyDelay: 1
+  burgerAngleOffsetLow: 22.5
+  orangePrefab: {fileID: 5830183256107544936, guid: 994e6979f24c32d4ca1ba8098e89b854, type: 3}
+  orangeCount: 3
+  groundLayerForOrange:
+    serializedVersion: 2
+    m_Bits: 8
+  orangeGravity: 9.8
+  orangeBounceFactor: 0.9
+  orangeInitSpeedX: {x: 2, y: 5}
+  orangeInitSpeedY: {x: 3, y: 7}
+  orangeLifetime: 10
+  orangeSpawnInterval: 0.25
+  orangeChargeTime: 0.35
+  orangeBrightMul: 2
+  orangeScaleUp: 1.12
+  orangeBounceRandomRange: {x: 0.75, y: 1.25}
+  lemonPrefab: {fileID: 3442406407373598556, guid: ae5d4fafab2c0c4488430e41dca900d9, type: 3}
+  lemonCount: 3
+  groundLayerForLemon:
+    serializedVersion: 2
+    m_Bits: 8
+  lemonSpeed: 3
+  lemonLifetime: 8
+  lemonSpawnInterval: 0.25
+  lemonChargeTime: 0.35
+  lemonBrightMul: 2
+  lemonScaleUp: 1.12
+  lemonSpawnIntervalRange: {x: 0.08, y: 0.35}
+  dashSpeed: 12
+  dashPause: 0.3
+  dashArriveTolerance: 0.5
+  cornerMargin: {x: 0.8, y: 0.8}
+  cornerArriveTolerance: 0.05
+  extraGapAfterPattern: 0.8
+  facingRoot: {fileID: 0}
+  invertFacing: 0
+  sfxDash: {fileID: 0}
+  sfxShoot: {fileID: 0}
+  sfxDepleted: {fileID: 0}
+  sfxHit: {fileID: 0}
+  hitSfxMinInterval: -1
+--- !u!114 &6149928377555196774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910149648681894658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03503b6fcfdc55f4b85045fc27565edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  requireBossAttackState: 1
+  bossAnimatorOverride: {fileID: 0}

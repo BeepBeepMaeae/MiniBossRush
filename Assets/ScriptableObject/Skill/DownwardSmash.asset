@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869c154982dcf314da0440f580df9d68, type: 3}
+  m_Name: DownwardSmash
+  m_EditorClassIdentifier: 
+  skillName: "\uB0B4\uB824\uCC0D\uAE30"
+  icon: {fileID: -6086044393419928071, guid: 10f3cacccb0c4c547be76836eba20664, type: 3}
+  description: "\uAC70\uB300\uD654\uB418\uC5C8\uB2E4\uAC00 \uC5C9\uB369\uC774\uB97C
+    \uB0B4\uB824\uCC0D\uC2B5\uB2C8\uB2E4.\n\uAC70\uB300\uD654 \uB418\uC5C8\uC744
+    \uB54C\uB294 \uBB34\uC801 \uD310\uC815\uC785\uB2C8\uB2E4.\n\uACF5\uC911\uC5D0
+    \uC788\uC744 \uB54C\uB9CC \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uCFE8\uD0C0\uC784:
+    20\uCD08\nSP \uC18C\uBAA8: 40\n\uD53C\uD574\uB7C9: 50"
+  cooldown: 20
+  staminaCost: 40
+  growthDuration: 0.5
+  maxScaleMultiplier: 2
+  slamSpeed: 20
+  damage: 50
+  damageRadius: 2
+  maxFallWait: 2
+  sfxGrow: {fileID: 8300000, guid: 5b7a690d2fe166f43a08f052d52f88a1, type: 3}
+  sfxSlam: {fileID: 8300000, guid: f70ca110a736cb74cabe175da2412e3c, type: 3}
