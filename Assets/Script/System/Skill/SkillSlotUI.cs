@@ -8,10 +8,10 @@ public class SkillSlotUI : MonoBehaviour
     [Tooltip("아이콘 이미지(옵션)")]
     public Image iconImage;
 
-    [Tooltip("쿨다운 진행을 '채워짐'으로 표시할 이미지 (예: 자식 오브젝트 'CoolDown')\nImage Type=Filled, Fill Method=Vertical, Origin=Top")]
+    [Tooltip("쿨다운 진행을 '채워짐'으로 표시할 이미지")]
     public Image cooldownFill;
 
-    [Tooltip("쿨다운 종료 시 흰색 번쩍을 표시할 패널 (예: 자식 오브젝트 'Panel')\nImage Type=Simple/Sliced (Filled 아님)")]
+    [Tooltip("쿨다운 종료 시 흰색 번쩍을 표시할 패널")]
     public Image flashPanel;
 
     [Header("색상/타이밍")]
@@ -27,7 +27,7 @@ public class SkillSlotUI : MonoBehaviour
 
     void Awake()
     {
-        // 자동 바인딩(있으면 무시)
+        // 자동 바인딩
         if (flashPanel == null)
         {
             var t = transform.Find("Panel");

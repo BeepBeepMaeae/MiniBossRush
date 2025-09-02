@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6def0fa90fad140854752c95203139, type: 3}
   m_Name: "\uB2E8\uB2E8\uD574\uC9C0\uAE30"
   m_EditorClassIdentifier: 
-  title: "\uB2E8\uB2E8\uD574\uC9C0"
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  title: "\uB2E8\uB2E8\uD574\uC9C0\uAE30"
+  icon: {fileID: 702440686663989086, guid: 56d2c419e1710134d9380db215638c22, type: 3}
   requireAllMaxToAppear: 0
   currentLevel: 0
   levels:

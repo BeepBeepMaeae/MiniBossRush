@@ -2,10 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// 백면 천레 영혼 컨트롤러: Pattern3(오브 소환)과 Pattern4(레이저) 패턴을
-/// 동시에 실행하며, 완료 후 IsCompleted 플래그를 세팅합니다.
-/// </summary>
 public class SpiritBackController : MonoBehaviour
 {
     [Header("Orb Settings")]
@@ -110,7 +106,6 @@ public class SpiritBackController : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    // 화면 이동 애니메이션 (Up/Down) 생략: 씬 이동만 발생
     IEnumerator PatternSpirit()
     {
         // Ascend

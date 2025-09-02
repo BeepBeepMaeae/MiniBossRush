@@ -1,4 +1,3 @@
-// Assets/Scripts/Bullet.cs
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -14,8 +13,6 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        // Assets/Scripts/Bullet.cs
-
         if (other.CompareTag("Boss"))
         {
             var bc = other.GetComponent<BossController>();
@@ -30,7 +27,7 @@ public class Bullet : MonoBehaviour
         }
 
 
-        // Enemy 태그(PracticeBot 등)에 충돌했을 때는 항상 피해
+        // Enemy 태그에 충돌했을 때는 항상 피해
         if (other.CompareTag("Enemy"))
         {
             var enemyHealth = other.GetComponent<Health>();

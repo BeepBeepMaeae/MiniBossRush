@@ -6,7 +6,6 @@ public class Laser : MonoBehaviour
 
     void Start()
     {
-        // Auto-destroy after 5 seconds
         Destroy(gameObject, 5f);
     }
 
@@ -17,7 +16,6 @@ public class Laser : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Destroy if hits anything except the player
         if (!col.gameObject.CompareTag("Player"))
             Destroy(gameObject);
     }

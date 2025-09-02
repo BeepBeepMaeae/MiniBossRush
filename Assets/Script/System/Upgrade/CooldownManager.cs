@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/CooldownManager.cs
 using UnityEngine;
 
 public class CooldownManager : MonoBehaviour
@@ -12,9 +11,6 @@ public class CooldownManager : MonoBehaviour
     public void ReduceItemCooldown(float percent)
         => reductionPercent = Mathf.Clamp01(reductionPercent + percent);
 
-    /// <summary>
-    /// 실제 쿨타임 계산에 사용하세요.
-    /// </summary>
     public float Apply(float baseCooldown)
         => baseCooldown * (1f - reductionPercent);
 }

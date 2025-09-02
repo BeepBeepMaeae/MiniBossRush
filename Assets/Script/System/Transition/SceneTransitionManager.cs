@@ -27,7 +27,6 @@ public class SceneTransitionManager : MonoBehaviour
     [Tooltip("여기에 포함된 씬에서만 R키 즉시 리로드가 동작합니다. 비워두면 모든 씬 허용.")]
     public string[] quickReloadScenes;
 
-    // 외부 주입 금지: 항상 자기 자신에 붙은 SceneFader만 사용
     SceneFader _fader;
     SceneFader Fader
     {
@@ -42,7 +41,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
 
-    // ★ 전환 중 중복 호출 가드
+    // 전환 중 중복 호출 가드
     private bool _isTransitioning = false;
 
     void Awake()
@@ -117,7 +116,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void ReloadCurrentScene()
     {
-        if (_isTransitioning) return; // ★ 중복 차단
+        if (_isTransitioning) return; // 중복 차단
         StartCoroutine(ReloadRoutine());
     }
 
@@ -146,13 +145,11 @@ public class SceneTransitionManager : MonoBehaviour
     // ───────────────────────────────────────────────
     // 저장파일 적용(스냅샷터가 없을 때도 동작)
     // ───────────────────────────────────────────────
-// SceneTransitionManager.cs 내부
 IEnumerator ApplyPendingSaveDataIfAny()
 {
     var data = SaveLoadBuffer.Pending;
     if (data == null) yield break;
 
-    // GameSnapshotter가 생성될 시간을 아주 조금 기다렸다가 적용(최대 2초)
     float timeout = 2f;
     while (timeout > 0f)
     {
@@ -205,7 +202,7 @@ IEnumerator ApplyPendingSaveDataIfAny()
         sm.InitializeFrom(list, idx, true);
     }
 
-    // ► 폴백: 최근 무기 인덱스 적용(조용히)
+    // 폴백: 최근 무기 인덱스 적용(조용히)
     var wm = FindObjectOfType<WeaponManager>();
     if (wm != null && wm.playerController != null)
     {

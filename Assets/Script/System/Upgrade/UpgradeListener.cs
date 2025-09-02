@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/UpgradeListener.cs
 using UnityEngine;
 
 [RequireComponent(typeof(Health),typeof(Stamina),typeof(PlayerController))]
@@ -48,15 +47,6 @@ public class UpgradeListener : MonoBehaviour
             if (stamina.spBar != null) stamina.spBar.maxValue = stamina.maxSP;
         };
         UpgradeActions.OnSpRegen           += lvl => stamina.regenRate += 1f;
-
-        // ─────────────────────────────────────────────────────────
-        // 다리우스 랭전 (흡혈) 레벨별 효과
-        // 기본: 확률 20%, 회복 10%
-        // 2레벨: 회복 +2%
-        // 3레벨: 확률 +5%, 회복 +3%
-        // 4레벨: 회복 +2%
-        // 5레벨: 확률 +5%, 회복 +3%  → 최종: 확률 30%, 회복 20%
-        // ─────────────────────────────────────────────────────────
         UpgradeActions.OnVampiric += lvl =>
         {
             switch (lvl)
@@ -114,13 +104,11 @@ public class UpgradeListener : MonoBehaviour
             }
         };
 
-        // ───── 추가: 점프 1회 증가 ─────
         UpgradeActions.OnExtraJump += lvl =>
         {
             player.maxJumpCount += 1;
         };
 
-        // ───── 추가: 무량공처 해금 ─────
         UpgradeActions.OnUnlockUltimate += lvl =>
         {
             ultimateSkill.Unlock();

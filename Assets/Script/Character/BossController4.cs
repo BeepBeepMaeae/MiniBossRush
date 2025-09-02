@@ -7,7 +7,7 @@ public class BossController4 : BossController
     [Header("참조")]
     private BossMORI4Controller mori;
 
-    [Header("김재욱 체력(별도 → Health와 동기화)")]
+    [Header("체력(별도 → Health와 동기화)")]
     public float kjwMaxHp = 100f;
     [SerializeField] private float kjwHp;
     public LayerMask damageLayers;
@@ -329,7 +329,7 @@ public class BossController4 : BossController
     Corner RandomCorner() => (Corner)Random.Range(0, 4);
     Corner RandomBottomCorner() => (Random.value < 0.5f) ? Corner.BottomLeft : Corner.BottomRight;
 
-    // ★ 이동 종료 시 걷기 애니가 남지 않도록 공통 정지 함수
+    // 이동 종료 시 걷기 애니가 남지 않도록 공통 정지 함수
     private void SetIdleAnim()
     {
         if (!animator) return;
@@ -337,7 +337,7 @@ public class BossController4 : BossController
         animator.SetFloat("moveX", 0f);
     }
 
-    // ★★★ 안전 버전: 코너 이동 + 타임아웃 시 강제 스냅
+    // 안전 버전: 코너 이동 + 타임아웃 시 강제 스냅
     IEnumerator MoveToCornerSafe(Corner c)
     {
         Vector3 target = GetCornerPos(c);
@@ -686,7 +686,7 @@ public class BossController4 : BossController
             go.transform.localScale = baseSca;
 
             // 콜라이더 ON → 이동 시작
-            SetCollidersEnabled(go, true); // ★ 최대 밝기/크기 도달 후 ON
+            SetCollidersEnabled(go, true); // 최대 밝기/크기 도달 후 ON
             lc.enabled = true;
             lc.StartMoveLeft();
 
@@ -700,7 +700,7 @@ public class BossController4 : BossController
             }
         }
 
-        // ★ 모든 레몬이 사라질 때까지 대기(다음 패턴 방지)
+        // 모든 레몬이 사라질 때까지 대기(다음 패턴 방지)
         yield return WaitAllDestroyedOrCancelled(spawned);
     }
 

@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/UpgradeManager.cs
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -132,7 +131,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    // 구버전(이름만) 저장파일을 위한 보조: 같은 이름이 여러 번 있으면 그 횟수만큼 레벨업으로 처리
+    // 구버전
     public void LoadFromLegacyNames(IEnumerable<string> names)
     {
         if (names == null) return;

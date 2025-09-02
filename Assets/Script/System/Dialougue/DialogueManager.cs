@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class DialogueManager : MonoBehaviour
 {
     [Header("UI References")]
-    [Tooltip("대화 전용 Panel만 할당하세요")]
     public GameObject dialoguePanel;
     public Text dialogueText;
     public float typingSpeed = 0.05f;
@@ -31,18 +30,14 @@ public class DialogueManager : MonoBehaviour
             dialoguePanel.SetActive(false);
     }
 
-    /// <summary>
     /// 씬 로드마다 안전하게 DialogueOpen을 초기화
-    /// </summary>
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void ResetFlagOnSceneLoad()
     {
         DialogueOpen = false;
     }
 
-    /// <summary>
     /// 외부에서 대화를 시작할 때 호출
-    /// </summary>
     public void BeginDialogue(string[] lines, Action onComplete = null)
     {
         DialogueOpen = true;
@@ -108,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         IsTyping = false;
     }
 
-    /// <summary>모든 대사를 즉시 스킵하고 종료</summary>
+    /// 모든 대사를 즉시 스킵하고 종료
     public void SkipAll()
     {
         if (!DialogueOpen) return;
@@ -125,9 +120,7 @@ public class DialogueManager : MonoBehaviour
         onCompleteCallback?.Invoke();
     }
 
-    /// <summary>
     /// 콜백을 호출하지 않고 즉시 대화를 강제 종료(모달 UI 진입 등 안전 차단용).
-    /// </summary>
     void AbortWithoutCallback()
     {
         DialogueOpen = false;
@@ -140,10 +133,7 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel) dialoguePanel.SetActive(false);
     }
 
-    /// <summary>
-    /// 씬 어디서든 호출 가능한 전역 강제 종료.
-    /// 활성화된 모든 DialogueManager를 찾아 콜백 없이 끕니다.
-    /// </summary>
+    /// 씬 어디서든 호출 가능한 전역 강제 종료
     public static void ForceCloseAll()
     {
         DialogueOpen = false;

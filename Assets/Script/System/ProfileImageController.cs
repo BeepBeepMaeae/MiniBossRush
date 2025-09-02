@@ -36,7 +36,7 @@ public class ProfileImageController : MonoBehaviour
 
         float currentHp = playerHealth.CurrentHp;
 
-        // 데미지를 입었을 때 (HP 감소, 아직 사망 전)
+        // 데미지를 입었을 때 (HP 감소, 사망 전)
         if (currentHp < lastHp && currentHp > 0)
         {
             profileAnimator.SetTrigger("Damaged");

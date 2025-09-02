@@ -9,12 +9,11 @@ public class PanelNavController : MonoBehaviour
     public List<Selectable> items = new();
 
     [Header("선택 하이라이트(오버레이)")]
-    [Tooltip("선택된 항목 위에 겹칠 Image. 원하는 Sprite를 이 Image에 지정하세요.")]
+    [Tooltip("선택된 항목 위에 겹칠 Image")]
     public Image selectionOverlay;
     [Tooltip("오버레이 여백(+값은 더 크게).")]
     public Vector2 overlayPadding = Vector2.zero;
 
-    [Tooltip("Unity 기본 Selectable의 ColorTint/SpriteSwap 하이라이트를 제거합니다.")]
     public bool neutralizeUnityTint = true;
 
     private int index = 0;
@@ -36,7 +35,7 @@ public class PanelNavController : MonoBehaviour
     {
         if (neutralizeUnityTint) NeutralizeTint(items);
 
-        // ✅ 기본적으로 첫 번째 '사용 가능' 항목을 선택
+        // 기본적으로 첫 번째 '사용 가능' 항목을 선택
         index = GetFirstInteractableIndex();
         RefreshVisual();
 

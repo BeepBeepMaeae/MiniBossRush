@@ -1,4 +1,3 @@
-// BossMORI4Controller.cs
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -65,7 +64,7 @@ public class BossMORI4Controller : BossController
     public float energyBallLifeTime = 6f;
     public Transform[] energyBallMuzzles;
 
-    // ★ 신규: 유도 드론 소환
+    // 유도 드론 소환
     [Header("MORI 패턴 4: 유도 드론 소환(보스3 유도 드론)")]
     public GameObject guidedDronePrefab;
     [Tooltip("한 번에 몇 개 소환(요구사항: 2)")]
@@ -221,7 +220,7 @@ public class BossMORI4Controller : BossController
     {
         while (battleStarted)
         {
-            int count = 4; // ★ 레이저/가시/에너지볼/유도드론
+            int count = 4; // 레이저/가시/에너지볼/유도드론
             int pick;
             if (lastMoriPick < 0) pick = Random.Range(0, count);
             else { pick = Random.Range(0, count - 1); if (pick >= lastMoriPick) pick++; }
@@ -232,7 +231,7 @@ public class BossMORI4Controller : BossController
                 case 0: yield return Pattern_Lasers(); break;
                 case 1: yield return Pattern_SpikeRow(); break;
                 case 2: yield return Pattern_EnergyBurst(); break;
-                case 3: yield return Pattern_GuidedDrones(); break; // ★ 신규
+                case 3: yield return Pattern_GuidedDrones(); break; // 신규
             }
             yield return new WaitForSeconds(betweenPatterns);
         }
@@ -463,7 +462,7 @@ IEnumerator Pattern_GuidedDrones()
 
     for (int w = 0; w < Mathf.Max(1, guidedWaves); w++)
     {
-        // ▼ 추가: 웨이브 시작 시 드론 소환 SFX 재생
+        // 웨이브 시작 시 드론 소환 SFX 재생
         PlaySfx2D(sfxDroneSpawn);
 
         for (int i = 0; i < Mathf.Max(1, dronesPerWave); i++)
@@ -577,7 +576,7 @@ IEnumerator Pattern_GuidedDrones()
         PlaySfx2D(clip);
     }
 
-    // ──────────────── BGM 제어(동일) ────────────────
+    // ──────────────── BGM 제어 ────────────────
     void SwitchToBossBgm()
     {
         if (_bossBgmActive || bossBgmClip == null) return;

@@ -75,12 +75,11 @@ public class CanTrash : MonoBehaviour
                 // Y 속도 반전 (하강), 크기는 bounceFactor 적용
                 velocity.y = -Mathf.Abs(velocity.y) * bounceFactor;
 
-                // optional: 각도 왜곡 적용
                 float angle = Random.Range(-bounceAngleVariance, bounceAngleVariance);
                 velocity = Quaternion.Euler(0f, 0f, angle) * velocity;
             }
         }
-        // 3) 땅 충돌 체크(하강 중일 때)
+        // 3) 땅 충돌 체크
         if (velocity.y < 0f)
         {      
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayDist, groundLayer);

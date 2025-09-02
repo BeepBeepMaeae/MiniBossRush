@@ -60,10 +60,7 @@ public class SceneFader : MonoBehaviour
     public Coroutine FadeIn(float duration = -1f)
         => StartCoroutine(FadeRoutine(1f, 0f, ClampDuration(duration)));
 
-    /// <summary>
     /// 장면 시작 시: 검정으로 세팅 → 다음 프레임부터 페이드 인
-    /// (같은 프레임 내 즉시 투명화되는 컷 현상 방지)
-    /// </summary>
     public Coroutine FadeInFromBlack(float duration = -1f)
         => StartCoroutine(FadeInFromBlackCo(ClampDuration(duration)));
 

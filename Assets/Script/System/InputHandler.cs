@@ -7,8 +7,6 @@ public class InputHandler : MonoBehaviour
     public SkillManager skillManager;
     public Health healthComponent;
     public Stamina staminaComponent;
-
-    // 추가: 최종 스킬 참조
     public MuryangGongcheoSkill ultimateSkill;
 
     [Header("아이템 수치/쿨타임")]
@@ -70,7 +68,7 @@ public class InputHandler : MonoBehaviour
             var stm = SceneTransitionManager.Instance;
             if (stm != null && stm.IsQuickReloadScene())
             {
-                // ▼ 리로드 직전 현재 진행 상태를 스냅샷으로 만들어 보류 영역에 저장
+                // 리로드 직전 현재 진행 상태를 스냅샷으로 만들어 보류 영역에 저장
                 var snap = FindObjectOfType<GameSnapshotter>();
                 if (snap == null)
                 {

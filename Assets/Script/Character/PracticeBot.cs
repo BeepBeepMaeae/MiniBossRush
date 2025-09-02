@@ -1,4 +1,3 @@
-// PracticeBot.cs
 using UnityEngine;
 using System;
 using System.Collections;
@@ -29,7 +28,7 @@ public class PracticeBot : MonoBehaviour
         var col = GetComponent<Collider2D>();
         if (col != null) col.isTrigger = true;
 
-        // Health에 자체 OnDeath 이벤트가 있다면 안전망으로 연결(있을 때만)
+        // Health에 자체 OnDeath 이벤트가 있다면 안전망으로 연결
         // hp.OnDeath += Die;  // Health에 OnDeath가 존재한다면 주석 해제
     }
 

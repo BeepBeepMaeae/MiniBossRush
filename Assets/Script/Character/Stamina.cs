@@ -12,7 +12,7 @@ public class Stamina : MonoBehaviour
     private float exhaustionThreshold;
 
     [Header("자동 회복 속도 (초당 회복량)")]
-    public float regenRate = 1f;           // 새로 추가
+    public float regenRate = 1f;
     private float regenAccumulator = 0f;
 
     // UI 색상 관리

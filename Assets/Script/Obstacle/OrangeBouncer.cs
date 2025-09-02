@@ -20,7 +20,7 @@ public class OrangeBouncerNRB : MonoBehaviour
     public float lifetime = 8f;
 
     private Vector2 velocity;
-    private bool preferRight = false;   // ★ 발사 방향 유지용 플래그
+    private bool preferRight = false;   // 발사 방향 유지용 플래그
     private Collider2D col;
     private float halfH;
     private float timer;
@@ -40,7 +40,7 @@ public class OrangeBouncerNRB : MonoBehaviour
         velocity = new Vector2(vx, vy);
     }
 
-    // ★ 오른쪽으로 던지기
+    // 오른쪽으로 던지기
     public void LaunchRightward()
     {
         preferRight = true;
@@ -77,7 +77,7 @@ public class OrangeBouncerNRB : MonoBehaviour
             {
                 next.y = downHit.collider.bounds.max.y + halfH;
                 velocity.y = Mathf.Abs(velocity.y) * bounceFactor;
-                // ★ 발사 방향 유지(이전 버전: 무조건 왼쪽으로 흘러감)
+                // 발사 방향 유지
                 velocity.x = (preferRight ? +Mathf.Abs(velocity.x) : -Mathf.Abs(velocity.x)) * bounceFactor;
             }
         }

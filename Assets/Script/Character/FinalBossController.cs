@@ -7,18 +7,10 @@ using UnityEngine.Audio;
 using System.Reflection;
 
 
-/// <summary>
-/// 최종 보스: 황금률 최선오
-/// - 3분할 지면 기믹(좌/중/우)
-/// - 기본 패턴 1~5
-/// - HP ≤ 66% : 추가 발악 패턴(E1, E2) 합류
-/// - HP ≤ 33% : 보스 러쉬(영혼 패턴) 1회 발동 후 복귀
-/// - HP ≤ 15% : 최종 전용 패턴만 반복
-/// </summary>
 public class FinalBossController : BossController
 {
     // ─────────────────────────────────────────────────────────────
-    // 공통 (※ moveSpeed는 BossController에 있으므로 여기서 선언 금지)
+    // 공통
     // ─────────────────────────────────────────────────────────────
     private Health hp;
     private Animator anim;
@@ -44,7 +36,7 @@ public class FinalBossController : BossController
     public float stairsStepHeight = 1.2f;   // 계단 높이 간격
     private Vector3 gL0, gM0, gR0;          // 초기 위치 저장
 
-    // 지면 리지드바디 캐시(있으면 MovePosition 사용)
+    // 지면 리지드바디 캐시
     private Rigidbody2D gLRb, gMRb, gRRb;
 
 
@@ -125,7 +117,7 @@ public class FinalBossController : BossController
     // 66% 이하 발악 패턴
     // ─────────────────────────────────────────────────────────────
     [Header("E1: 지면 무빙 + 장애물(7종 각각 다른 프리팹)")]
-    public GameObject[] obstaclePrefabs = new GameObject[7];  // ← 7개 전부 서로 다른 프리팹 할당
+    public GameObject[] obstaclePrefabs = new GameObject[7];
     public Vector2 obstacleSpeedRange = new Vector2(3f, 6f);
     public float e1Duration = 6f;
     public Vector2 groundMoveAmpRange = new Vector2(0.7f, 1.3f);
@@ -229,7 +221,7 @@ public class FinalBossController : BossController
 
 
     // ─────────────────────────────────────────────────────────────
-    //  BGM (보스1/2/3과 동일 동작)
+    //  BGM
     // ─────────────────────────────────────────────────────────────
     [Header("BGM")]
     public AudioClip bossBgmClip;
@@ -304,7 +296,7 @@ public class FinalBossController : BossController
     {
         if (hp == null) return;
 
-        // ▶ 피격 SFX: HP가 감소했고 아직 사망 전일 때 1회 재생
+        // 피격 SFX: HP가 감소했고 아직 사망 전일 때 1회 재생
         if (hp.CurrentHp < _lastHp && hp.CurrentHp > 0f)
             TryPlayHitSfx();
         _lastHp = hp.CurrentHp;
@@ -334,7 +326,7 @@ public class FinalBossController : BossController
         base.StartBattle();
         if (!battleStarted) return;
 
-        // ★ 보스전 시작 시 보스 BGM으로 전환
+        // 보스전 시작 시 보스 BGM으로 전환
         SwitchToBossBgm();
 
         battleLoopOn = true;
@@ -436,7 +428,7 @@ public class FinalBossController : BossController
             transform.position = fallEnd;
             anim.SetBool("isFalling", false);
 
-            // ▶ 내려찍기 착지 SFX
+            // 내려찍기 착지 SFX
             PlaySfx2D(sfxSlam);
 
             // 착지 후 파동: 좌/우 각각 1개
@@ -450,7 +442,7 @@ public class FinalBossController : BossController
                 yield return new WaitForSeconds(0.25f); // 다음 내려찍기까지 간격
         }
 
-        // ★ 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
+        // 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
         yield return NudgeIntoViewX();
 
         void SpawnWave(int dirSign)
@@ -527,7 +519,7 @@ IEnumerator Pattern_VertLaserSweep()
         if (!laserPrefab) return;
         var go = Instantiate(laserPrefab, origin, Quaternion.identity);
 
-        // ▶ 레이저 소환 SFX
+        // 레이저 소환 SFX
         PlaySfx2D(sfxLaserSpawn);
 
         if (go.TryGetComponent<SimpleMover>(out var mv))
@@ -567,13 +559,13 @@ IEnumerator Pattern_VertLaserSweep()
 
             anim.SetTrigger("isAttack1");
 
-            // ▶ 5연속 접근 공격 모션 SFX(각 회차)
+            // 5연속 접근 공격 모션 SFX(각 회차)
             PlaySfx2D(sfxApproachStep);
 
             yield return new WaitForSeconds(0.12f);
         }
 
-        // ★ 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
+        // 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
         yield return NudgeIntoViewX();
     }
 
@@ -642,7 +634,7 @@ IEnumerator Pattern_VertLaserSweep()
             if (!energyBallDropPrefab) return null;
             var go = Instantiate(energyBallDropPrefab, pos, Quaternion.identity);
 
-            // ▶ 에너지볼 소환 SFX(3개 각각)
+            // 에너지볼 소환 SFX(3개 각각)
             PlaySfx2D(sfxEnergySpawn);
 
             StartCoroutine(FlashIn(go));
@@ -686,7 +678,7 @@ IEnumerator Pattern_VertLaserSweep()
             FacePlayer();
             var go = Instantiate(wavePrefab, transform.position, Quaternion.identity);
 
-            // ▶ 파동 소환 SFX
+            // 파동 소환 SFX
             PlaySfx2D(sfxWaveSpawn);
 
             StartCoroutine(FlashIn(go)); // 밝아지며 등장
@@ -737,7 +729,7 @@ IEnumerator Pattern_VertLaserSweep()
     {
         FacePlayer();
 
-        // 패턴 전: 공중으로 점프(계단 드롭과 동일한 흐름)
+        // 패턴 전: 공중으로 점프
         Vector3 groundPos = transform.position;
         yield return JumpUpToAir();
 
@@ -752,8 +744,6 @@ IEnumerator Pattern_VertLaserSweep()
         yield return FallTo(groundPos);
     }
 
-
-// FinalBossController.cs — E1 지면 무빙: 첫 번째 튀어오름과 동일 파라미터로 2회만 반복
 IEnumerator GroundsRandomMove(float duration)
 {
     float t = 0f;
@@ -821,20 +811,45 @@ IEnumerator GroundsRandomMove(float duration)
             if (!prefab) continue;
 
             bool fromLeft = (Random.value < 0.5f);
-            float x = fromLeft ? (cam.transform.position.x - halfW - 0.8f)
-                            : (cam.transform.position.x + halfW + 0.8f);
+            float x = fromLeft
+                ? (cam.transform.position.x - halfW - 0.8f)
+                : (cam.transform.position.x + halfW + 0.8f);
             float y = Random.Range(cam.transform.position.y - halfH + 0.5f,
-                                cam.transform.position.y + halfH - 0.5f);
+                                   cam.transform.position.y + halfH - 0.5f);
             float spd = Random.Range(obstacleSpeedRange.x, obstacleSpeedRange.y);
             Vector2 v = (fromLeft ? Vector2.right : Vector2.left) * spd;
 
             var go = Instantiate(prefab, new Vector3(x, y, 0f), Quaternion.identity);
+
+            // 이동 방향 설정
             if (go.TryGetComponent<SimpleMover>(out var mv))
                 mv.velocity = v;
+
+            ApplyFlipX(go, flipX: !fromLeft);
 
             StartCoroutine(FadeOutAndDestroy(go, Mathf.Max(0f, e1Duration - obstacleFadeTime), obstacleFadeTime));
         }
     }
+
+    void ApplyFlipX(GameObject go, bool flipX)
+    {
+        if (!go) return;
+
+        // 자식 포함 모든 SpriteRenderer에 우선 적용
+        var srs = go.GetComponentsInChildren<SpriteRenderer>(true);
+        if (srs != null && srs.Length > 0)
+        {
+            foreach (var sr in srs) if (sr) sr.flipX = flipX;
+            return;
+        }
+
+        // SpriteRenderer가 없다면 로컬 스케일로 폴백
+        var t = go.transform;
+        var sc = t.localScale;
+        sc.x = Mathf.Abs(sc.x) * (flipX ? -1f : 1f);
+        t.localScale = sc;
+    }
+
 
 
     // ─────────────────────────────────────────────────────────────
@@ -898,7 +913,7 @@ IEnumerator GroundsRandomMove(float duration)
             if (!laserPrefab) return;
             var go = Instantiate(laserPrefab, origin, Quaternion.identity);
 
-            // ▶ 레이저 소환 SFX
+            // 레이저 소환 SFX
             PlaySfx2D(sfxLaserSpawn);
 
             if (go.TryGetComponent<SimpleMover>(out var mv))
@@ -912,7 +927,7 @@ IEnumerator GroundsRandomMove(float duration)
             if (!laserPrefab) return;
             var go = Instantiate(laserPrefab, origin, Quaternion.Euler(0, 0, 90f));
 
-            // ▶ 레이저 소환 SFX
+            // 레이저 소환 SFX
             PlaySfx2D(sfxLaserSpawn);
 
             if (go.TryGetComponent<SimpleMover>(out var mv))
@@ -923,7 +938,7 @@ IEnumerator GroundsRandomMove(float duration)
         }
     }
     // ─────────────────────────────────────────────────────────────
-    // H1: 화면 끝까지 돌진 (마지막에 Nudge 추가)
+    // H1: 화면 끝까지 돌진
     // ─────────────────────────────────────────────────────────────
     IEnumerator Pattern_DashToEdge()
     {
@@ -945,7 +960,7 @@ IEnumerator GroundsRandomMove(float duration)
             yield return null;
         }
 
-        // ★ 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
+        // 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
         yield return NudgeIntoViewX();
     }
 
@@ -992,12 +1007,12 @@ IEnumerator GroundsRandomMove(float duration)
         // 본체 숨김(히트박스 비활성 포함)
         SetVisible(false);
 
-        // 1) 백면 천레
+        // 1)
         if (spiritBackObject && spiritCtrl)
         {
             spiritBackObject.SetActive(true);
 
-            // ▶ 영혼 소환 SFX
+            // 영혼 소환 SFX
             PlaySfx2D(sfxSoulSpawn);
 
             yield return FadeSprites(spiritBackObject, soulFadeTime, true); // 밝아지며 등장
@@ -1015,7 +1030,7 @@ IEnumerator GroundsRandomMove(float duration)
         {
             taxiSoulObject.SetActive(true);
 
-            // ▶ 영혼 소환 SFX
+            // 영혼 소환 SFX
             PlaySfx2D(sfxSoulSpawn);
 
             yield return FadeSprites(taxiSoulObject, soulFadeTime, true);
@@ -1028,7 +1043,7 @@ IEnumerator GroundsRandomMove(float duration)
         }
         else { yield return new WaitForSeconds(soulPhaseTime); }
 
-        // 3) 강영대(보스3 소울)
+        // 3)
         if (boss3SoulObject && boss3Soul)
         {
             boss3SoulObject.SetActive(true);
@@ -1044,14 +1059,14 @@ IEnumerator GroundsRandomMove(float duration)
         }
         else { yield return new WaitForSeconds(soulPhaseTime); }
 
-        // 4) MORI + 김재욱 동시
+        // 4) MORI
         if (boss4MoriSoulObject && boss4MoriSoul && boss4KJWSoulObject && boss4KJWSoul)
         {
             boss4MoriSoulObject.SetActive(true);
             PlaySfx2D(sfxSoulSpawn);   // ▶ MORI 영혼 소환 SFX
 
             boss4KJWSoulObject.SetActive(true);
-            PlaySfx2D(sfxSoulSpawn);   // ▶ KJW 영혼 소환 SFX
+            PlaySfx2D(sfxSoulSpawn);   // ▶ 영혼 소환 SFX
 
             yield return FadeSprites(boss4MoriSoulObject, soulFadeTime, true);
             yield return FadeSprites(boss4KJWSoulObject, soulFadeTime, true);
@@ -1111,15 +1126,13 @@ IEnumerator GroundsRandomMove(float duration)
                 yield return new WaitForSeconds(shotGap);
             }
 
-            // 상단에서 작은 볼 낙하 (★ SFX 제거됨)
+            // 상단에서 작은 볼 낙하
             for (int b = 0; b < smallBallPerCycle15; b++)
             {
                 float x = Random.Range(cam.transform.position.x - halfW + 0.6f,
                                     cam.transform.position.x + halfW - 0.6f);
                 Vector3 pos = new Vector3(x, cam.transform.position.y + halfH + 0.6f, 0f);
                 var go = Instantiate(smallEnergyBallPrefab, pos, Quaternion.identity);
-
-                // (이전에는 여기서 PlaySfx2D(sfxEnergySpawn); 호출했으나 제거)
 
                 if (go.TryGetComponent<SimpleMover>(out var mv))
                     mv.velocity = Vector2.down * Random.Range(5f, 9f);
@@ -1137,7 +1150,7 @@ IEnumerator GroundsRandomMove(float duration)
 
             var go = Instantiate(prefab, origin, Quaternion.Euler(0, 0, 90f));
 
-            // ▶ 레이저 소환 SFX(15% 전용도 포함)
+            // 레이저 소환 SFX
             PlaySfx2D(sfxLaserSpawn);
 
             if (go.TryGetComponent<SimpleMover>(out var mv))
@@ -1226,7 +1239,7 @@ IEnumerator GroundsRandomMove(float duration)
         isDeadHandled = true;
         StopAllCoroutines();
 
-        // ★ 보스 사망 시 BGM 페이드아웃
+        // 보스 사망 시 BGM 페이드아웃
         FadeOutAllBgmOnDeath();
 
         StartCoroutine(DeathSequence());
@@ -1234,7 +1247,7 @@ IEnumerator GroundsRandomMove(float duration)
 
     private IEnumerator DeathSequence()
     {
-        // ▶ 사망 SFX
+        // 사망 SFX
         PlaySfx2D(sfxDeath);
 
         anim.SetTrigger("isDead");
@@ -1272,8 +1285,6 @@ IEnumerator GroundsRandomMove(float duration)
         // 엔딩 씬 로드: 하드 모드 + FinalBoss 씬이면 HardEnding
         string target = endingSceneName;
         var curr = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        if (DifficultyManager.IsHardMode && curr == "FinalBoss")
-            target = "HardEnding";
 
         if (!string.IsNullOrEmpty(target))
             UnityEngine.SceneManagement.SceneManager.LoadScene(target);
@@ -1435,7 +1446,7 @@ IEnumerator GroundsRandomMove(float duration)
     }
     
     // ─────────────────────────────────────────────────────────────
-//  BGM 제어 (보스1/2/3과 동일 흐름)
+//  BGM 제어
 // ─────────────────────────────────────────────────────────────
 void SwitchToBossBgm()
 {
@@ -1443,7 +1454,7 @@ void SwitchToBossBgm()
 
     if (_am != null)
     {
-        // AudioManager 우선 (오버로드 호환)
+        // AudioManager 우선
         var mCross = _am.GetType().GetMethod("PlayBGM", new[] { typeof(AudioClip), typeof(float), typeof(bool) });
         if (mCross != null)
         {

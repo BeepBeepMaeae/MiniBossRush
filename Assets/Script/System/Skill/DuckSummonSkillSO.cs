@@ -25,6 +25,5 @@ public class DuckSummonSkillSO : SkillSO
         var sd = duck.GetComponent<SummonedDuck>();
         if (sd == null) sd = duck.AddComponent<SummonedDuck>();
         sd.SetOwner(player.gameObject);
-        // 지속시간 무제한이므로 어떤 타이머도 두지 않음
     }
 }

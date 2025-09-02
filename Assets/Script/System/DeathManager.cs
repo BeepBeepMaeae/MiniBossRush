@@ -51,7 +51,7 @@ public class DeathManager : MonoBehaviour
         StartCoroutine(DeathSequence());
     }
 
-    // 업그레이드 UI에서 “선택 확정” 시 호출 권장
+    // 업그레이드 UI에서 선택 확정 시 호출 권장
     public void OnUpgradeConfirmed()
     {
         DialogueManager.ForceCloseAll();
@@ -155,12 +155,10 @@ public class DeathManager : MonoBehaviour
         {
             var uiGO = Instantiate(upgradeUIPrefab, uiCanvas.transform, false);
 
-            // 혹시 모를 대화 재차단
             DialogueManager.ForceCloseAll();
 
             var sel = uiGO.GetComponent<UpgradeSelectionUI>();
             if (sel != null) sel.Init(pickCount);
-            // 선택 확정 시: DeathManager.Instance.OnUpgradeConfirmed() 호출 권장
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class SummonedLemonCrawler : MonoBehaviour
 {
     [Header("지면/벽 체크 (Raycast)")]
-    public LayerMask groundMask;                 // 미설정 시 "Ground" 자동
+    public LayerMask groundMask;
     [Tooltip("아래 레이 시작 높이(오브젝트 위에서 내려찍기)")]
     public float stickProbeHeight = 1.5f;
     [Tooltip("지면 위로 띄우는 여유값(들썩임 방지)")]
@@ -66,7 +66,7 @@ public class SummonedLemonCrawler : MonoBehaviour
     {
         _lifeTimer = 0f;
         _edgeTimer = 0f;
-        // 스폰 즉시 바닥에 스냅(롱캐스트)
+        // 스폰 즉시 바닥에 스냅
         SnapToGroundAtX(transform.position.x, true);
     }
 
@@ -85,7 +85,7 @@ public class SummonedLemonCrawler : MonoBehaviour
     {
         float dt = Time.fixedDeltaTime;
 
-        // DPS 예산 보충(초당 maxDamagePerSecond)
+        // DPS 예산 보충
         _damageBudget = Mathf.Min(maxDamagePerSecond, _damageBudget + maxDamagePerSecond * dt);
 
         // 수명 종료 처리

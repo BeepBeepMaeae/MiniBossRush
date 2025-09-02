@@ -1,19 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// BossSoulController3
-/// - BossController3의 PatternHumor(오늘의 유머) + PatternWave(파동) 축약 모사
-/// - Initialize(...) 호출 → (유머 + 파동) 병렬 실행 → 완료 시 IsCompleted=true
-/// - 배치된 위치(spawnPos)에 그대로 등장 (낙하물/파동은 카메라/플레이어 기준)
-/// </summary>
 public class BossSoulController3 : MonoBehaviour
 {
-    [Header("오늘의 유머")]
-    public GameObject humorLogoPrefab;
-    [Min(1)] public int humorSegments = 10;            // 화면 가로를 몇 줄로 나눌지
-    [Min(1)] public int humorWaves = 2;                // 홀/짝 교차 웨이브 수
-    public float humorSpawnInterval = 0.05f;           // 웨이브 간 간격
+    [Header("눈물")]
+    public GameObject tearLogoPrefab;
+    [Min(1)] public int tearSegments = 10;            // 화면 가로를 몇 줄로 나눌지
+    [Min(1)] public int tearWaves = 2;                // 홀/짝 교차 웨이브 수
+    public float tearSpawnInterval = 0.05f;           // 웨이브 간 간격
     public float topMargin = 1.0f;                     // 화면 위 여유
 
     [Header("파동")]
@@ -25,12 +19,12 @@ public class BossSoulController3 : MonoBehaviour
     [Header("SFX")]
     [Tooltip("Ready 트리거 시 1회")]
     public AudioClip sfxReady;
-    [Tooltip("오늘의 유머 한 줄(열) 떨어질 때마다")]
-    public AudioClip sfxHumorDrop;
+    [Tooltip("한 줄(열) 떨어질 때마다")]
+    public AudioClip sfxtearDrop;
     [Tooltip("파동을 1발 쏠 때마다(총 waveCount회)")]
     public AudioClip sfxWave;
     [Tooltip("유머 낙하 SFX 최소 간격(과다 중첩 방지, 0이면 매번)")]
-    public float humorSfxMinInterval = 0f;
+    public float tearSfxMinInterval = 0f;
 
     public bool IsCompleted { get; private set; }
 
@@ -39,7 +33,7 @@ public class BossSoulController3 : MonoBehaviour
     private float halfW, halfH;
     private Animator animator;
 
-    private float _lastHumorSfxTime = -999f;
+    private float _lasttearSfxTime = -999f;
 
     void Awake()
     {
@@ -64,52 +58,48 @@ public class BossSoulController3 : MonoBehaviour
             halfW = halfH * cam.aspect;
         }
 
-        // Ready 트리거 + SFX
-        if (animator) animator.SetTrigger("Ready");
-        PlaySfx2D(sfxReady);
-
         IsCompleted = false;
         StartCoroutine(RunAllPatterns());
     }
 
     private IEnumerator RunAllPatterns()
     {
-        bool humorDone = false;
+        bool tearDone = false;
         bool waveDone  = false;
 
         // 병렬 실행
-        StartCoroutine(HumorPattern(() => humorDone = true));
+        StartCoroutine(TearPattern(() => tearDone = true));
         StartCoroutine(WavePattern(() => waveDone = true));
 
-        yield return new WaitUntil(() => humorDone && waveDone);
+        yield return new WaitUntil(() => tearDone && waveDone);
         IsCompleted = true;
     }
 
     // 오늘의 유머(교차 웨이브로 낙하 로고 생성)
-    private IEnumerator HumorPattern(System.Action onDone)
+    private IEnumerator TearPattern(System.Action onDone)
     {
-        if (!humorLogoPrefab || cam == null || humorSegments <= 0)
+        if (!tearLogoPrefab || cam == null || tearSegments <= 0)
         {
             onDone?.Invoke(); yield break;
         }
 
         float leftX  = cam.transform.position.x - halfW + 0.5f;
         float rightX = cam.transform.position.x + halfW - 0.5f;
-        float segW   = (rightX - leftX) / humorSegments;
+        float segW   = (rightX - leftX) / tearSegments;
 
-        for (int w = 0; w < humorWaves; w++)
+        for (int w = 0; w < tearWaves; w++)
         {
             int parity = w % 2; // 0: 짝, 1: 홀
-            for (int s = parity; s < humorSegments; s += 2)
+            for (int s = parity; s < tearSegments; s += 2)
             {
                 float x = leftX + (s + 0.5f) * segW;
                 Vector3 pos = new Vector3(x, cam.transform.position.y + halfH + topMargin, 0f);
-                Instantiate(humorLogoPrefab, pos, Quaternion.identity);
+                Instantiate(tearLogoPrefab, pos, Quaternion.identity);
 
                 // 유머 낙하 SFX (레이트 제한 지원)
-                TryPlayRateLimited(sfxHumorDrop, ref _lastHumorSfxTime, humorSfxMinInterval);
+                TryPlayRateLimited(sfxtearDrop, ref _lasttearSfxTime, tearSfxMinInterval);
             }
-            if (humorSpawnInterval > 0f) yield return new WaitForSeconds(humorSpawnInterval);
+            if (tearSpawnInterval > 0f) yield return new WaitForSeconds(tearSpawnInterval);
             else yield return null;
         }
 
@@ -128,8 +118,12 @@ public class BossSoulController3 : MonoBehaviour
 
         for (int i = 0; i < Mathf.Max(1, waveCount); i++)
         {
-            // 발사체 생성 및 방향 부여
+            // 발사체 생성
             var go = Instantiate(wavePrefab, transform.position, Quaternion.identity);
+
+            // 플레이어보다 "오른쪽"에서 생성되면 flipX = true
+            bool shouldFlipX = (player != null) && (transform.position.x > player.position.x);
+            SetFlipX(go, shouldFlipX);
 
             // BlackWave 지원
             var bw = go.GetComponent<BlackWave>();
@@ -157,6 +151,26 @@ public class BossSoulController3 : MonoBehaviour
 
         onDone?.Invoke();
     }
+
+private void SetFlipX(GameObject obj, bool flip)
+{
+    if (!obj) return;
+
+    var srs = obj.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
+    if (srs != null && srs.Length > 0)
+    {
+        foreach (var sr in srs)
+            if (sr) sr.flipX = flip;
+        return;
+    }
+
+    // 폴백: 스케일로 좌우 반전
+    var t = obj.transform;
+    var s = t.localScale;
+    s.x = Mathf.Abs(s.x) * (flip ? -1f : 1f);
+    t.localScale = s;
+}
+
 
     // ──────────────── SFX Helpers ────────────────
     void PlaySfx2D(AudioClip clip)

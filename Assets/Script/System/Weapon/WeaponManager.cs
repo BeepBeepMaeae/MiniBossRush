@@ -4,12 +4,13 @@ public class WeaponManager : MonoBehaviour
 {
     [Header("UI Slots")]
     public WeaponSlotUI[] slots;
+
     [Header("Player")]
-    public PlayerController playerController;  // 에디터에서 할당 권장
+    public PlayerController playerController;
 
     void Start()
     {
-        // ★ 씬 시작 시 Pending에 최근 무기가 있으면 ‘조용히’ 강제 적용
+        // 씬 시작 시 Pending에 최근 무기가 있으면 강제 적용
         int pendingIdx = (SaveLoadBuffer.Pending != null) ? SaveLoadBuffer.Pending.recentWeaponIndex : -1;
         if (pendingIdx >= 0 && playerController != null)
         {
@@ -20,14 +21,6 @@ public class WeaponManager : MonoBehaviour
             // 기본: 현재 인덱스로 하이라이트만 정리
             UpdateAllSlots(true);
         }
-    }
-
-    void Update()
-    {
-        // (테스트용) 숫자키 전환
-        if (Input.GetKeyDown(KeyCode.Alpha1) && InputLocker.CanSwitchWeapon) SelectWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2) && InputLocker.CanSwitchWeapon) SelectWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3) && InputLocker.CanSwitchWeapon) SelectWeapon(2);
     }
 
     public void SelectWeapon(int index, bool silent = false)

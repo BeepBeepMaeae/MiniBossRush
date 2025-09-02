@@ -38,9 +38,7 @@ public class WhiteOrb : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    /// <summary>
     /// BossController 또는 SkillSO 에서 호출해서 발사 방향을 설정
-    /// </summary>
     public void Launch(Vector3 direction)
     {
         moveDir = direction.normalized;
@@ -79,8 +77,6 @@ public class WhiteOrb : MonoBehaviour
             return;
         }
 
-        // Assets/Scripts/Bullet.cs
-
         if (other.CompareTag("Boss"))
         {
             var bc = other.GetComponent<BossController>();
@@ -95,7 +91,7 @@ public class WhiteOrb : MonoBehaviour
         }
 
 
-        // Enemy 태그(PracticeBot 등)에 충돌했을 때는 항상 피해
+        // Enemy 태그에 충돌했을 때는 항상 피해
         if (other.CompareTag("Enemy"))
         {
             var enemyHealth = other.GetComponent<Health>();

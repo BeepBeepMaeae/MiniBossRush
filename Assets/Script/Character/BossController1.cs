@@ -255,7 +255,7 @@ public class BossController1 : BossController
             yield return new WaitForSeconds(0.2f);
         }
 
-        // ★ 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
+        // 패턴 종료 후: 화면 밖이면 살짝 걸어 들어오기
         yield return NudgeIntoViewX();
     }
 
@@ -694,10 +694,9 @@ public class BossController1 : BossController
         _bossBgmActive = true;
     }
 
-    // ★★★ 수정 핵심: AudioManager 호출 후에도 로컬 페이드아웃을 '항상' 수행하여 확실히 끈다.
     void FadeOutAllBgmOnDeath()
     {
-        // 1) AudioManager에 먼저 요청(있으면)
+        // 1) AudioManager에 먼저 요청
         AudioSource amBgm = null, amMusic = null;
         if (_am != null)
         {

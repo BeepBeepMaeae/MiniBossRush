@@ -4,11 +4,8 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 
-/// <summary>
 /// 퀴즈 UI (키보드 위/아래 내비게이션, Z/Enter 확정)
 /// - 선택지 전환 SFX / 선택 SFX / 정답/오답 SFX / 타이머 루프 SFX
-/// - 기존 QuizManager/QuizQuestion와 호환
-/// </summary>
 public class QuizUI : MonoBehaviour
 {
     [Header("Wording / UI")]

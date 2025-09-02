@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/HealthAutoRegen.cs
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]

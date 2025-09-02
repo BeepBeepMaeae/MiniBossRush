@@ -12,9 +12,9 @@ public class MuryangGongcheoSkill : MonoBehaviour
     public bool IsUnlocked { get; private set; } = false;
 
     [Header("Audio")]
-    [Tooltip("무량공처 시전 효과음 (BGM이 페이드아웃되며 재생)")]
+    [Tooltip("멸망 시전 효과음 (BGM이 페이드아웃되며 재생)")]
     public AudioClip sfxCast;
-    [Tooltip("무량공처 전용 테마(10초 보장 재생)")]
+    [Tooltip("멸망 전용 테마(10초 보장 재생)")]
     public AudioClip ultimateBgm;
     public float castBgmFadeOut = 0.8f;   // 시전 시 기존 BGM 페이드 아웃
     public float ultimateBgmFadeIn = 0.5f;
@@ -37,7 +37,7 @@ public class MuryangGongcheoSkill : MonoBehaviour
     {
         if (!IsUnlocked || isCasting || (oneTimeUse && hasUsed)) return;
 
-        // ★ 보스전 시작 여부 체크
+        // 보스전 시작 여부 체크
         if (onlyDuringBossBattle && !IsBossBattleStarted())
         {
             // TODO: 필요하면 여기서 경고음 재생

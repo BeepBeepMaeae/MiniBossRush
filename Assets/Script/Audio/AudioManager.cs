@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-/// <summary>
 /// 전역 오디오 매니저
 /// - DontDestroyOnLoad
 /// - BGM: 더블 버퍼(2소스) 크로스페이드
 /// - SFX: 풀링된 원샷 재생 (2D/AtPoint)
 /// - AudioMixer( MasterVol / BGMVol / SFXVol ) 연동
-/// </summary>
 [DefaultExecutionOrder(-100)]
 public class AudioManager : MonoBehaviour
 {
@@ -110,8 +108,6 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene s, LoadSceneMode m)
     {
-        // 씬 로드시 별도 로직 필요하면 사용
-        // (BGM은 각 씬의 BGMController가 OnEnable에서 PlayBGM을 호출)
     }
 
     // ─────────────────────────────────────────────

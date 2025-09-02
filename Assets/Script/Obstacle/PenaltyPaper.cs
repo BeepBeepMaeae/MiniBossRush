@@ -12,9 +12,6 @@ public class PenaltyPaper : MonoBehaviour
     Vector2 _direction = Vector2.zero;
     float _timer = 0f;
 
-    /// <summary>
-    /// BossController3에서 호출해서 방향을 지정해 주세요.
-    /// </summary>
     public void Launch(Vector2 dir)
     {
         _direction = dir.normalized;

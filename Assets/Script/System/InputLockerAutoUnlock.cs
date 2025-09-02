@@ -2,12 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// 튜토리얼이 아닌 씬에 진입하면 입력락을 기본 해제해 주는 부트스트랩.
-/// - 보스 씬을 직접 플레이(테스트)할 때 이동 외 모든 키가 막히는 문제를 방지.
-/// - Load Game으로 진입할 때도 동일하게 보장.
-/// - 하드 모드에선 아이템/스킬은 InputHandler에서 자체 차단되므로 해제해도 안전.
-/// </summary>
 [DefaultExecutionOrder(-1000)]
 public class InputLockerAutoUnlock : MonoBehaviour
 {
@@ -59,7 +53,7 @@ public class InputLockerAutoUnlock : MonoBehaviour
     {
         string name = s.name ?? string.Empty;
 
-        // 메뉴/연출/튜토리얼을 제외한 나머지는 "게임플레이"로 간주
+        // 메뉴/연출/튜토리얼을 제외한 나머지는 게임플레이로 간주
         if (IsTutorial(name) || IsMenuOrCinematic(name)) return;
 
         UnlockAllForGameplay();

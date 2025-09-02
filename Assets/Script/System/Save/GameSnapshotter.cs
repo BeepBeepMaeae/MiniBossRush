@@ -79,7 +79,7 @@ public class GameSnapshotter : MonoBehaviour, IProgressSnapshotter
             }
         }
 
-        // ► 최근 무기 인덱스: PlayerController에서 ‘직접’ 읽음 (가장 신뢰 가능)
+        // 최근 무기 인덱스: PlayerController에서 직접 읽음
         var pc = FindObjectOfType<PlayerController>();
         if (pc != null)
         {
@@ -156,7 +156,7 @@ public class GameSnapshotter : MonoBehaviour, IProgressSnapshotter
             }
         }
 
-        // ► 최근 무기 복원(조용히)
+        // 최근 무기 복원(조용히)
         var wm2 = FindObjectOfType<WeaponManager>();
         if (wm2 != null && wm2.playerController != null)
         {

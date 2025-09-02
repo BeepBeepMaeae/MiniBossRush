@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72316acb00261e94b8e3e44ecffc65a9, type: 3}
   m_Name: Lemon Throw
   m_EditorClassIdentifier: 
-  skillName: "\uB808\uBAAC\uC9C0"
+  skillName: "\uB808\uBAAC"
   icon: {fileID: -4588854041495768185, guid: fdc844060df777948a1d672fec1882f3, type: 3}
   description: "\uB808\uBAAC\uC744 \uB358\uC9D1\uB2C8\uB2E4.\n\uB808\uBAAC\uC740
     10\uCD08\uAC04 \uBC14\uB2E5\uC5D0 \uBD99\uC5B4\uC11C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C

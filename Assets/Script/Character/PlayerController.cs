@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float staminaDrainRate = 20f;
     public float staminaRegenRate = 2f;
 
-    [Header("Roll & Dash (Elden Ring 스타일)")]
+    [Header("Roll & Dash")]
     public float rollThreshold = 0.2f;
     public float rollDistance = 3f;
     public float rollDuration = 0.3f;
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
 
-        // ★ 씬 생성 즉시: Pending의 ‘최근 무기’ 선적용 (UI 초기화보다 먼저)
+        // 씬 생성 즉시: Pending의 ‘최근 무기’ 선적용 (UI 초기화보다 먼저)
         ApplyRecentWeaponFromPendingSave();
     }
 
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         // 선적용된 인덱스 기준 비주얼 갱신
         UpdateWeaponVisuals();
 
-        // ★ 1프레임 뒤 UI 하이라이트 동기화(다른 매니저 초기화보다 ‘마지막에’ 덮어쓰기)
+        // 1프레임 뒤 UI 하이라이트 동기화(다른 매니저 초기화보다 ‘마지막에’ 덮어쓰기)
         StartCoroutine(SyncWeaponUIEndOfFrame());
     }
 

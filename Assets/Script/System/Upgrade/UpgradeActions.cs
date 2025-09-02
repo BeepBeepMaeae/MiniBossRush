@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/UpgradeActions.cs
 using System;
 
 public static class UpgradeActions

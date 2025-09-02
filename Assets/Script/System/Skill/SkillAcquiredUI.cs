@@ -95,13 +95,13 @@ public class SkillAcquiredUI : MonoBehaviour
         if (panelRoot && !panelRoot.activeSelf) panelRoot.SetActive(true);
         if (_cg != null) { _cg.alpha = 1f; _cg.blocksRaycasts = true; _cg.interactable = true; }
 
-        // ‘확인 전용’ 모드일 경우, 확인 버튼만 인터랙션 허용
+        // 확인 전용 모드일 경우, 확인 버튼만 인터랙션 허용
         ApplyConfirmOnlyMode();
 
         _index = Mathf.Clamp(confirmIndex, 0, (actionSelectables?.Length ?? 1) - 1);
         RefreshOverlay();
 
-        // ★ 플레이어 입력 잠금 + 즉시 수평 정지
+        // 플레이어 입력 잠금 + 즉시 수평 정지
         LockPlayerInputAndStopHorizontally();
     }
 
@@ -139,9 +139,6 @@ public class SkillAcquiredUI : MonoBehaviour
         // 제출(확인)
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
             SubmitCurrent();
-
-        // 취소키는 무시(확인만 가능)
-        // if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape)) { /* 무시 */ }
     }
 
     private void SubmitCurrent()
@@ -171,7 +168,7 @@ public class SkillAcquiredUI : MonoBehaviour
 
         if (panelRoot && panelRoot.activeSelf) panelRoot.SetActive(false);
 
-        // ★ 스냅샷 기반 자동 저장 (스냅샷터가 없어도 즉석 생성)
+        // 스냅샷 기반 자동 저장 (스냅샷터가 없어도 즉석 생성)
         TryAutoSaveRobust("AfterSkill");
 
         Closed?.Invoke();

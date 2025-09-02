@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642860bb0b36b1d4d9656900f01952fc, type: 3}
   m_Name: Game14
   m_EditorClassIdentifier: 
-  questionText: "\uB2E4\uC218\uC758 \uC0AC\uB78C\uB4E4\uC774 \uD2B9\uC815 \uD589\uB3D9\uC744
-    \uD558\uBA74 \uADF8 \uD589\uB3D9\uC774 \uC633\uB2E4\uACE0 \uBBFF\uACE0 \uB530\uB77C\uAC00\uB294
-    \uC2EC\uB9AC\uC758 \uD6A8\uACFC\uB294?"
+  questionText: "\uB2E4\uC74C \uC911 '\uCC99\uCD94\uB3D9\uBB3C'\uC5D0 \uC18D\uD558\uB294
+    \uAC83\uC740?"
   options:
-  - "\uBC34\uB4DC\uC65C\uAC74 \uD6A8\uACFC"
-  - "\uD53C\uADF8\uB9D0\uB9AC\uC628 \uD6A8\uACFC"
-  - "\uB204\uC218 \uD6A8\uACFC"
-  - "\uC778\uD50C\uB808\uC774\uC158"
-  correctIndex: 0
+  - "\uBB38\uC5B4"
+  - "\uBA54\uB69C\uAE30"
+  - "\uAC70\uBBF8"
+  - "\uB3C4\uB871\uB1FD"
+  correctIndex: 3

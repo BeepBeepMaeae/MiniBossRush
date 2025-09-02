@@ -4,12 +4,6 @@ using UnityEngine.SceneManagement;
 
 public static class SkillGrantAPI
 {
-    /// <summary>
-    /// 스킬을 획득시킵니다.
-    /// - persistNow: 즉시 세션/디스크 저장까지 수행(권장 true)
-    /// - showPopup : 신규 획득 시 SkillGrantUI 팝업 표시
-    /// 반환값: true면 신규 획득, false면 이미 보유 중(중복).
-    /// </summary>
     public static bool Acquire(SkillSO skill, bool persistNow = true, bool showPopup = true)
     {
         if (skill == null)
@@ -50,7 +44,7 @@ public static class SkillGrantAPI
             if (PersistentGameState.Instance != null)
                 PersistentGameState.Instance.CaptureFromScene();
 
-            // ★ 디스크 저장(스냅샷터가 없어도 즉석 생성하여 저장 보장)
+            // 디스크 저장(스냅샷터가 없어도 즉석 생성하여 저장 보장)
             TryAutoSaveRobust("AfterSkill");
         }
 

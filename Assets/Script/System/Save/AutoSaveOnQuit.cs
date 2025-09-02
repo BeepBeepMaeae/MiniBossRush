@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
 /// 앱 종료/일시정지 시 자동 저장.
-/// 강제 종료 보호를 위해 빈 스냅샷이면 저장을 시도하지 않습니다(기존 세이브 보호).
-/// </summary>
+/// 강제 종료 보호를 위해 빈 스냅샷이면 저장을 시도하지 않음
+
 public class AutoSaveOnQuit : MonoBehaviour
 {
     [Tooltip("앱이 백그라운드로 갈 때도 자동 저장(모바일 권장)")]
@@ -31,7 +30,7 @@ public class AutoSaveOnQuit : MonoBehaviour
         var snap = FindObjectOfType<GameSnapshotter>();
         SaveData data = snap != null ? snap.BuildSaveData() : new SaveData();
 
-        // (신규) 난이도 기록
+        // 난이도 기록
         data.difficulty = (DifficultyManager.Instance != null)
             ? DifficultyManager.Instance.Current
             : GameDifficulty.Easy;

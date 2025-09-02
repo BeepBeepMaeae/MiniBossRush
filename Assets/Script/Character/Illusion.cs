@@ -1,25 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
 /// 리메이크된 3보스의 '분신' 연출 컨트롤러.
 /// - 실제 피해/충돌 없음. 보스의 애니메이션·타이밍만 흉내.
-/// - 패턴 시작 전 isSpell 트리거와 함께 맵 좌/중/우 중 한 곳으로 '순간이동'.
-/// - 오늘의 유머 / 제자리 공격 / 파동 3가지만 랜덤 반복.
-/// - 퀴즈(대화) 진행 중에는 패턴을 멈추고 대기.
-/// - 보스 타이밍을 자동으로 읽어와 동기화(없으면 기본값 사용).
-/// </summary>
+
 public class Illusion : MonoBehaviour
 {
     private enum IllusionPattern { StationaryAttack = 0, Humor = 1, Wave = 2 }
 
-    [Header("기본 타이밍 (보스 없을 때 폴백 값)")]
+    [Header("기본 타이밍")]
     [Min(1)] public int   stationaryAttackRepeats = 3;
     public float          stationaryReadyTime     = 0.6f;
     public float          stationaryAttackInterval= 0.5f;
 
-    public float          humorCastTime           = 1.0f;  // (순간이동 이후) 시전 모션 대기
-    public float          humorHoldTime           = 3.0f;
+    public float          tearCastTime           = 1.0f;  // (순간이동 이후) 시전 모션 대기
+    public float          tearHoldTime           = 3.0f;
 
     public float          waveCastTime            = 1.1f;
     public int            waveCount               = 7;     // 실제 발사 대신 길이 산정에만 사용
@@ -56,9 +51,8 @@ public class Illusion : MonoBehaviour
             stationaryReadyTime      = _boss.stationaryReadyTime;
             stationaryAttackInterval = _boss.stationaryAttackInterval;
 
-            // 오늘의 유머
-            humorCastTime            = _boss.humorCastTime;
-            humorHoldTime            = _boss.humorHoldTime;
+            tearCastTime            = _boss.tearCastTime;
+            tearHoldTime            = _boss.tearHoldTime;
 
             // 파동
             waveCastTime             = _boss.waveCastTime;
@@ -174,8 +168,8 @@ public class Illusion : MonoBehaviour
         if (facePlayerEachPattern) FacePlayer();
 
         // 실제 로고 스폰은 보스가 수행. 분신은 연출만.
-        yield return new WaitForSeconds(humorCastTime);
-        yield return new WaitForSeconds(humorHoldTime);
+        yield return new WaitForSeconds(tearCastTime);
+        yield return new WaitForSeconds(tearHoldTime);
     }
 
     // ─────────────────────────────────────────────

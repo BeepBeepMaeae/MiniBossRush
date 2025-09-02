@@ -476,8 +476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castDuration: 3
   oneTimeUse: 1
-  sfxCast: {fileID: 8300000, guid: b2d1b025972bbe54b85230dc942ea3a3, type: 3}
-  ultimateBgm: {fileID: 8300000, guid: 840e212ea6772404da22b47e8b6bbe94, type: 3}
+  sfxCast: {fileID: 8300000, guid: a0af88b3087bdd84c8df50aa600ab707, type: 3}
+  ultimateBgm: {fileID: 8300000, guid: 36d3395e6e9b9594f8cad7af418e49d5, type: 3}
   castBgmFadeOut: 0.8
   ultimateBgmFadeIn: 0.5
   ultimateBgmHold: 10

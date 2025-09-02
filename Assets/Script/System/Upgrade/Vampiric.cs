@@ -8,12 +8,11 @@ public class Vampiric : MonoBehaviour
     [Header("회복 비율 (0~1)")]
     [Range(0f, 1f)] public float lifeStealRatio  = 0f;   // 기본 0: 미습득 상태
 
-    // 플레이어의 흡혈 컴포넌트(전역 캐시)
+    // 플레이어의 흡혈 컴포넌트
     public static Vampiric Player { get; private set; }
 
     void Awake()
     {
-        // PlayerController가 붙어있거나 Health.isPlayer=true 이면 플레이어로 간주
         var hc = GetComponent<Health>();
         if (GetComponent<PlayerController>() != null || (hc != null && hc.isPlayer))
             Player = this;
@@ -24,10 +23,8 @@ public class Vampiric : MonoBehaviour
         if (Player == this) Player = null;
     }
 
-    /// <summary>
     /// 공격으로 damage를 입힐 때마다 호출.
     /// 설정된 확률(lifeStealChance)로, damage * lifeStealRatio 만큼 회복.
-    /// </summary>
     public void StealLife(int damage)
     {
         if (damage <= 0) return;

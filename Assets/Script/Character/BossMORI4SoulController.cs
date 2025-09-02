@@ -53,7 +53,7 @@ public class BossMORI4SoulController : MonoBehaviour
 
         for (int volley = 0; volley < energyVolleys; volley++)
         {
-            // ▶ 차지 SFX
+            // 차지 SFX
             PlaySfx2D(sfxEnergyCharge);
 
             var charges = new List<GameObject>(muzzleCount);
@@ -133,7 +133,7 @@ public class BossMORI4SoulController : MonoBehaviour
                     }
                 }
 
-                // ▶ 발사 SFX
+                // 발사 SFX
                 PlaySfx2D(sfxEnergyFire);
 
                 if (shot < energyShotsNormal - 1 && energyShotInterval > 0f)

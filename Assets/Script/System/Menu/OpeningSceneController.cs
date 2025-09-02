@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class OpeningSceneController : MonoBehaviour
 {
-    [Header("입력 키 (DialogueManager와 동일 기본값)")]
+    [Header("입력 키")]
     public KeyCode nextKey = KeyCode.F;    // 한 장면(이미지) 넘기기
     public KeyCode skipAllKey = KeyCode.G; // 전체 오프닝 스킵
 
-    [Header("이미지 레이어 (둘 중 하나만 표시용으로 사용)")]
+    [Header("이미지 레이어")]
     public Image layerA;
     public Image layerB;
 
-    [Header("오프닝 이미지들 (순서대로)")]
+    [Header("오프닝 이미지들")]
     public Sprite[] slides;
 
-    [Header("BGM (선택)")]
+    [Header("BGM")]
     public AudioClip openingBgm;
     public bool loopBgm = true;
     public float bgmFadeIn = 0.8f;
@@ -29,7 +29,7 @@ public class OpeningSceneController : MonoBehaviour
 
     void Start()
     {
-        // 표시용 Image 선택 (A가 있으면 A 우선, 없으면 B)
+        // 표시용 Image 선택
         _display = layerA != null ? layerA : layerB;
         if (_display != null)
         {
@@ -40,7 +40,7 @@ public class OpeningSceneController : MonoBehaviour
         if (_display == layerA && layerB) layerB.enabled = false;
         if (_display == layerB && layerA) layerA.enabled = false;
 
-        // BGM 재생(선택)
+        // BGM 재생
         if (openingBgm && AudioManager.Instance != null)
             AudioManager.Instance.PlayBGM(openingBgm, bgmFadeIn, loopBgm);
 

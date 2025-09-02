@@ -24,7 +24,7 @@ public class PersistentGameState : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    /// <summary>현재 씬의 플레이어/매니저들로부터 상태를 수집하여 저장</summary>
+    /// 현재 씬의 플레이어/매니저들로부터 상태를 수집하여 저장
     public void CaptureFromScene()
     {
         var player = FindObjectOfType<PlayerController>();
@@ -35,7 +35,7 @@ public class PersistentGameState : MonoBehaviour
         {
             savedWeaponIndex = Mathf.Max(0, player.currentWeaponIndex);
 
-            // R-리로드 등 직전 스냅샷(Pending)이 존재하면, 여기도 맞춰 둔다
+            // R-리로드 등 직전 스냅샷이 존재하면, 여기도 맞춰 둠
             if (SaveLoadBuffer.Pending != null)
                 SaveLoadBuffer.Pending.recentWeaponIndex = savedWeaponIndex;
         }
@@ -43,13 +43,13 @@ public class PersistentGameState : MonoBehaviour
         // 스킬
         if (skillM != null)
         {
-            // 공개 프로퍼티가 있다고 가정 (프로젝트 구조에 맞춤)
+            // 공개 프로퍼티가 있다고 가정
             savedSkills = new List<SkillSO>(skillM.Skills);
             savedSkillIndex = Mathf.Clamp(skillM.CurrentIndex, 0, Mathf.Max(0, savedSkills.Count - 1));
         }
     }
 
-    /// <summary>새 씬에 플레이어/매니저가 생성된 후 저장값을 적용</summary>
+    /// 새 씬에 플레이어/매니저가 생성된 후 저장값을 적용
     public void ApplyToScene()
     {
         // 1) Pending(즉시 리로드/사망/로드 직전 스냅샷)이 있으면 그 값을 최우선으로

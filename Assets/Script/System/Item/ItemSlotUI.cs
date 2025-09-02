@@ -24,7 +24,7 @@ public class ItemSlotUI : MonoBehaviour
 
     [Header("SFX(사용 성공)")]
     public SlotKind slotKind = SlotKind.HealthPotion;
-    public AudioClip sfxUse;                // 슬롯 전용(없으면 아래 기본 사용)
+    public AudioClip sfxUse;                // 슬롯 전용
     public AudioClip sfxUseHealthDefault;   // 기본 HP 포션
     public AudioClip sfxUseStaminaDefault;  // 기본 SP 포션
 
@@ -32,7 +32,7 @@ public class ItemSlotUI : MonoBehaviour
 
     void Awake()
     {
-        // 자동 바인딩(있으면 무시)
+        // 자동 바인딩
         if (flashPanel == null)
         {
             var t = transform.Find("Panel");

@@ -12,13 +12,13 @@ public class BossController3 : BossController
     // ─────────────────────────────────────────────────────────────────────────────
     //  패턴 설정
     // ─────────────────────────────────────────────────────────────────────────────
-    [Header("오늘의 유머 패턴")]
-    public GameObject humorLogoPrefab;
-    [Min(1)] public int humorSegments = 10;
-    [Min(1)] public int humorWaves = 2;
-    public float humorSpawnInterval = 0.05f;
-    public float humorHoldTime = 3f;        // 시전 후 유지 시간
-    public float humorCastTime = 1f;        // (순간이동 이후) 시전 모션 시간
+    [Header("공 패턴")]
+    public GameObject tearLogoPrefab;
+    [Min(1)] public int tearSegments = 10;
+    [Min(1)] public int tearWaves = 2;
+    public float tearSpawnInterval = 0.05f;
+    public float tearHoldTime = 3f;        // 시전 후 유지 시간
+    public float tearCastTime = 1f;        // (순간이동 이후) 시전 모션 시간
     private int lastPattern = -1;
 
     [Header("제자리 공격 패턴(구: 돌진)")]
@@ -27,7 +27,7 @@ public class BossController3 : BossController
     public float stationaryReadyTime = 0.6f;
 
     [Header("파동 패턴 (일반 시전)")]
-    public GameObject wavePrefab;           // BlackWave.cs 부착 프리팹
+    public GameObject wavePrefab;
     [Min(1)] public int waveCount = 7;
     public float waveSpawnInterval = 0.05f;
     public float waveCastTime = 1.1f;
@@ -46,7 +46,7 @@ public class BossController3 : BossController
     private Collider2D[] _bossColliders;
 
     [Header("즉사 패널티 연출")]
-    public Image screenFader;               // 전체 화면 Image(검정, 알파 0)
+    public Image screenFader;               // 전체 화면 Image
     public float pullDuration = 1.2f;
     public float postPullBlackout = 0.8f;
     public float postBlackoutDelay = 0.2f;
@@ -54,13 +54,13 @@ public class BossController3 : BossController
     [Header("대화/퀴즈 공통")]
     public GameObject dialoguePanel;
     public Text dialogueText;
-    public string[] quizDialogues;          // (선택) 세트 시작 전 한 줄 출력
+    public string[] quizDialogues;          // 세트 시작 전 한 줄 출력
     public GameObject quizManagerPrefab;    // QuizManager 프리팹
-    public QuizQuestion[] questionBank;     // 보스전 전체에서 사용할 문제 풀(최소 9문제 권장)
+    public QuizQuestion[] questionBank;     // 보스전 전체에서 사용할 문제 풀
 
 
     [Header("분신 소환")]
-    public GameObject illusionPrefab;       // ★ 퀴즈 세트 완료 시 1기 소환
+    public GameObject illusionPrefab;       // 퀴즈 세트 완료 시 1기 소환
 
     [Header("사망 연출/보상/포탈")]
     [TextArea] public string[] deathDialogueLines;
@@ -71,7 +71,7 @@ public class BossController3 : BossController
     private bool _rewardGranted = false;
 
     // ─────────────────────────────────────────────────────────────────────────────
-    //  BGM (보스1/2와 동일 동작)
+    //  BGM
     // ─────────────────────────────────────────────────────────────────────────────
     [Header("BGM")]
     public AudioClip bossBgmClip;
@@ -93,8 +93,8 @@ public class BossController3 : BossController
     [Header("SFX")]
     [Tooltip("Ready 트리거 시 1회")]
     public AudioClip sfxReady;
-    [Tooltip("오늘의 유머 한 줄(열) 떨어질 때마다")]
-    public AudioClip sfxHumorDrop;
+    [Tooltip(" 눈물 한 줄(열) 떨어질 때마다")]
+    public AudioClip sfxtearDrop;
     [Tooltip("Attack 트리거 시(반복 공격 포함)")]
     public AudioClip sfxAttack;
     [Tooltip("파동을 1발 쏠 때마다(7회 전부)")]
@@ -110,12 +110,12 @@ public class BossController3 : BossController
 
 
 
-    [Tooltip("유머 낙하 SFX 최소 간격(과다 중첩 방지, 0이면 매번)")]
-    public float humorSfxMinInterval = 0f;
+    [Tooltip("눈물 낙하 SFX 최소 간격(과다 중첩 방지, 0이면 매번)")]
+    public float tearSfxMinInterval = 0f;
     [Tooltip("Attack SFX 최소 간격(과다 중첩 방지)")]
     public float attackSfxMinInterval = 0.1f;
 
-    private float _lastHumorSfxTime = -999f;
+    private float _lasttearSfxTime = -999f;
     private float _lastAttackSfxTime = -999f;
 
     // ─────────────────────────────────────────────────────────────────────────────
@@ -143,7 +143,7 @@ public class BossController3 : BossController
     private Queue<QuizQuestion> _uniqueQuizQueue;     // 미리 섞어서 9개 큐로 보관
     private int _consumedQuestions = 0;               // 사용한 문제 수(최대 9)
 
-    // 분신 추적(사망 시 일괄 Off)
+    // 분신 추적
     private readonly List<GameObject> _spawnedIllusions = new();
 
     // 피격 SFX용
@@ -219,7 +219,7 @@ public class BossController3 : BossController
         _lastHp = _hp.CurrentHp;
 
 
-        // ── (A) 1% 세트: 무조건 1%로 한번 버티고 퀴즈 3문제 후 전투 재개
+        // 1% 세트: 무조건 1%로 한번 버티고 퀴즈 3문제 후 전투 재개
         float onePercentValue = Mathf.Max(1f, _maxHp * 0.01f);
 
         if (!_isDeadHandled && !_onePercentQuizTriggered &&
@@ -233,14 +233,14 @@ public class BossController3 : BossController
             return;
         }
 
-        // ── (B) 일반 사망 처리(1% 세트 이후에는 정상 사망 허용)
+        // 일반 사망 처리(1% 세트 이후에는 정상 사망 허용)
         if (!_isDeadHandled && _hp.IsDead && !_inQuiz)
         {
             HandleDeath();
             return;
         }
 
-        // ── (C) 66% / 33% 시점 퀴즈 세트 트리거
+        // 66% / 33% 시점 퀴즈 세트 트리거
         if (!_inQuiz && _quizStageIndex < _quizThresholds.Length)
         {
             float ratio = _hp.CurrentHp / Mathf.Max(1f, _maxHp);
@@ -273,17 +273,8 @@ public class BossController3 : BossController
         base.StartBattle();
         if (!battleStarted) return;
 
-        // ★ 보스전 시작 시 BGM 스위치(보스1/2와 동일)
+        // 보스전 시작 시 BGM 스위치
         SwitchToBossBgm();
-
-        if (_anim != null) _anim.SetTrigger("Ready");
-        PlaySfx2D(sfxReady);
-
-        if (readyVFXPrefab != null)
-        {
-            var vfx = Instantiate(readyVFXPrefab, transform.position, Quaternion.identity);
-            Destroy(vfx, 2f);
-        }
 
         if (_patternLoopCo != null) StopCoroutine(_patternLoopCo);
         _patternLoopCo = StartCoroutine(PatternLoop());
@@ -303,7 +294,7 @@ public class BossController3 : BossController
             switch (pick)
             {
                 case 0: yield return Pattern_StationaryAttack(); break;
-                case 1: yield return Pattern_Humor();            break;
+                case 1: yield return Pattern_tear();            break;
                 case 2: yield return Pattern_Wave();             break;
             }
 
@@ -315,7 +306,6 @@ public class BossController3 : BossController
 
     // ─────────────────────────────────────────────────────────────────────────────
     //  공통: 시전 전 위치(좌/중/우)로 '순간이동' + isSpell 트리거
-    //  (요청사항) 순간이동 시 Ready SFX도 재생
     // ─────────────────────────────────────────────────────────────────────────────
     private IEnumerator MoveToCastAnchor()
     {
@@ -332,7 +322,7 @@ public class BossController3 : BossController
         int choice = Random.Range(0, 3); // 0:Left, 1:Center, 2:Right
         float targetX = (choice == 0) ? leftX : (choice == 1 ? centerX : rightX);
 
-        // ★ 순간이동 직전 Ready SFX 재생
+        // 순간이동 직전 Ready SFX 재생
         PlaySfx2D(sfxReady);
 
         // 즉시 순간이동
@@ -354,7 +344,7 @@ public class BossController3 : BossController
         Flip(dir);
     }
 
-    // Flip (프로젝트 기준: dir>0(오른쪽)->scale.x 음수, dir<0(왼쪽)->양수)
+    // Flip
     protected void Flip(float dir)
     {
         var s = transform.localScale;
@@ -362,40 +352,45 @@ public class BossController3 : BossController
         transform.localScale = s;
     }
 
-    // 오늘의 유머: (순간이동→모션대기)→로고 스폰 (+ SFX)
-    private IEnumerator Pattern_Humor()
+    // 눈물: (순간이동→모션대기)→여러 줄 교차 스폰)
+    private IEnumerator Pattern_tear()
     {
         if (_cam == null) yield break;
 
-        yield return MoveToCastAnchor();            // ★ 시전 전 '순간이동' + Ready SFX
-        yield return new WaitForSeconds(humorCastTime);
+        yield return MoveToCastAnchor(); // ★ 시전 전 '순간이동' + Ready SFX
+        yield return new WaitForSeconds(tearCastTime);
 
-        float leftX = _cam.transform.position.x - _halfW;
-        float totalWidth = _halfW * 2f;
-        float segmentWidth = Mathf.Max(0.0001f, totalWidth / humorSegments);
+        float leftX       = _cam.transform.position.x - _halfW;
+        float totalWidth  = _halfW * 2f;
+        float segmentWidth = Mathf.Max(0.0001f, totalWidth / Mathf.Max(1, tearSegments));
 
-        for (int w = 0; w < Mathf.Max(1, humorWaves); w++)
+        // 웨이브 인덱스 (0,1,2,...) — 짝수/홀수를 번갈아 스폰
+        for (int w = 0; w < Mathf.Max(1, tearWaves); w++)
         {
-            int parity = w % 2;
-            for (int s = parity; s < humorSegments; s += 2)
+            int parity = w % 2; // 0=짝수열, 1=홀수열
+
+            for (int s = parity; s < tearSegments; s += 2)
             {
                 float x = leftX + (s + 0.5f) * segmentWidth;
                 Vector3 pos = new Vector3(x, _cam.transform.position.y + _halfH + 1f, 0f);
-                if (humorLogoPrefab != null) Instantiate(humorLogoPrefab, pos, Quaternion.identity);
 
-                // 오늘의 유머 "한 줄" 낙하 SFX (레이트 제한 선택)
-                TryPlayRateLimited(sfxHumorDrop, ref _lastHumorSfxTime, humorSfxMinInterval);
+                if (tearLogoPrefab != null) Instantiate(tearLogoPrefab, pos, Quaternion.identity);
+
+                // 눈물 낙하 SFX
+                TryPlayRateLimited(sfxtearDrop, ref _lasttearSfxTime, tearSfxMinInterval);
             }
-            yield return new WaitForSeconds(humorSpawnInterval);
+
+            yield return new WaitForSeconds(tearSpawnInterval);
         }
 
-        yield return new WaitForSeconds(humorHoldTime);
+        // 스폰 후 잠시 유지
+        yield return new WaitForSeconds(tearHoldTime);
     }
 
-    // 제자리 공격(구 돌진): (순간이동)→Ready→Attack 반복 (+ SFX)
+    // 제자리 공격: (순간이동)→Ready→Attack 반복
     private IEnumerator Pattern_StationaryAttack()
     {
-        yield return MoveToCastAnchor();            // ★ 시전 전 '순간이동' + Ready SFX
+        yield return MoveToCastAnchor();
         FacePlayer();
 
         if (_anim != null) _anim.SetTrigger("isAttackReady");
@@ -416,7 +411,7 @@ public class BossController3 : BossController
     // 파동(일반 시전): (순간이동)→isCast→파동 연사 (+ SFX)
     private IEnumerator Pattern_Wave()
     {
-        yield return MoveToCastAnchor();            // ★ 시전 전 '순간이동' + Ready SFX
+        yield return MoveToCastAnchor();            // 시전 전 '순간이동' + Ready SFX
         FacePlayer();
 
         if (_anim != null) _anim.SetTrigger("isCast");
@@ -427,19 +422,49 @@ public class BossController3 : BossController
             FacePlayer();
             if (wavePrefab != null && player != null)
             {
-                var bw = Instantiate(wavePrefab, transform.position, Quaternion.identity)
-                            .GetComponent<BlackWave>();
+                // 생성
+                var go = Instantiate(wavePrefab, transform.position, Quaternion.identity);
+
+                // 보스(=wave 생성 위치)가 플레이어의 오른쪽에 있으면 FlipX = true
+                bool shouldFlipX = transform.position.x > player.position.x;
+                SetFlipX(go, shouldFlipX);
+
+                // 발사
+                var bw = go.GetComponent<BlackWave>();
                 if (bw != null)
                     bw.Launch(player.position - transform.position);
             }
 
-            // 파동 1발 SFX (매번)
+            // SFX
             PlaySfx2D(sfxWave);
 
             yield return new WaitForSeconds(waveSpawnInterval);
             if (!battleStarted || _inQuiz) yield break;
         }
     }
+
+/// wave 인스턴스에 포함된 모든 SpriteRenderer에 대해 flipX를 설정
+/// 만약 SpriteRenderer가 없다면 로컬 스케일로 폴백
+private void SetFlipX(GameObject obj, bool flip)
+{
+    if (!obj) return;
+
+    var renderers = obj.GetComponentsInChildren<SpriteRenderer>(includeInactive: true);
+    if (renderers != null && renderers.Length > 0)
+    {
+        foreach (var sr in renderers)
+            if (sr) sr.flipX = flip;
+        return;
+    }
+
+    // 폴백: SpriteRenderer가 없으면 로컬 스케일로 처리
+    var t = obj.transform;
+    var s = t.localScale;
+    s.x = Mathf.Abs(s.x) * (flip ? -1f : 1f);
+    t.localScale = s;
+}
+
+
 
     // ─────────────────────────────────────────────────────────────────────────────
     //  즉사 패널티 (퀴즈 오답 시)
@@ -490,7 +515,7 @@ public class BossController3 : BossController
                 yield return null;
             }
 
-            // ★ 화면이 완전히 어두워진 직후 효과음
+            // 화면이 완전히 어두워진 직후 효과음
             PlaySfx2D(sfxAfterBlackout);
 
             yield return new WaitForSeconds(postBlackoutDelay);
@@ -523,7 +548,7 @@ public class BossController3 : BossController
         if (dialogueText != null && quizDialogues != null && quizDialogues.Length > 0)
             dialogueText.text = quizDialogues[Random.Range(0, quizDialogues.Length)];
 
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.F | KeyCode.G));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.G));
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         yield return new WaitForSeconds(0.1f);
 
@@ -567,7 +592,7 @@ public class BossController3 : BossController
             }
         }
 
-        // ★ 세트 클리어 보상: 분신 1기 소환
+        // 세트 클리어 보상: 분신 1기 소환
         if (illusionPrefab != null)
             SpawnIllusion(illusionPrefab);
 
@@ -643,7 +668,7 @@ public class BossController3 : BossController
         foreach (var w in FindObjectsOfType<BlackWave>(false))
             if (w && w.gameObject.activeSelf) w.gameObject.SetActive(false);
 
-        foreach (var h in FindObjectsOfType<HumorLogo>(false))
+        foreach (var h in FindObjectsOfType<TearLogo>(false))
             if (h && h.gameObject.activeSelf) h.gameObject.SetActive(false);
     }
 
@@ -659,7 +684,7 @@ public class BossController3 : BossController
         foreach (var w in FindObjectsOfType<BlackWave>(false))
             if (w && w.gameObject.activeSelf) w.gameObject.SetActive(false);
 
-        foreach (var h in FindObjectsOfType<HumorLogo>(false))
+        foreach (var h in FindObjectsOfType<TearLogo>(false))
             if (h && h.gameObject.activeSelf) h.gameObject.SetActive(false);
     }
 
@@ -687,7 +712,7 @@ public class BossController3 : BossController
 
         CleanupAllSummonsAndHazards();
 
-        // ★ 보스 사망 시 BGM 페이드 아웃
+        // 보스 사망 시 BGM 페이드 아웃
         FadeOutAllBgmOnDeath();
 
         StartCoroutine(DeathSequence());

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642860bb0b36b1d4d9656900f01952fc, type: 3}
   m_Name: Game12
   m_EditorClassIdentifier: 
-  questionText: "\uB300\uD55C\uBBFC\uAD6D(\uB0A8\uD55C)\uC5D0\uC11C \uAC00\uC7A5
-    \uB192\uC740 \uC0B0\uC740?"
+  questionText: "\uC2DD\uBAA9\uC77C\uC758 \uB0A0\uC9DC\uB294?"
   options:
-  - "\uD55C\uB77C\uC0B0"
-  - "\uC9C0\uB9AC\uC0B0"
-  - "\uBC31\uB450\uC0B0"
-  - "\uC7A5\uC0B0"
-  correctIndex: 0
+  - "5\uC6D4 1\uC77C"
+  - "4\uC6D4 5\uC77C"
+  - "3\uC6D4 15\uC77C"
+  - "4\uC6D4 23\uC77C"
+  correctIndex: 1

@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/UpgradeOption.cs
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Upgrade/Option")]
@@ -24,7 +23,7 @@ public class UpgradeOption : ScriptableObject
     }
     public UpgradeLevel[] levels;
 
-    // 사용자가 “선택” 했을 때만 호출 → 레벨업 + 이벤트
+    // 사용자가 선택했을 때만 호출 → 레벨업 + 이벤트
     public void Apply()
     {
         if (!CanLevelUp)
@@ -36,7 +35,7 @@ public class UpgradeOption : ScriptableObject
         DispatchEvent(currentLevel);
     }
 
-    // 씬 재시작 시, currentLevel 만큼 이벤트만 재발동 (레벨업은 하지 않음)
+    // 씬 재시작 시, currentLevel 만큼 이벤트만 재발동
     public void Reapply()
     {
         for (int lvl = 1; lvl <= currentLevel; lvl++)

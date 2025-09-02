@@ -4,13 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
-/// Level(난이도) 선택 전용 패널 컨트롤러
-/// - 좌/우 방향키로 Selectable 전환
-/// - 선택 오버레이 하이라이트
-/// - 현재 선택 난이도(Easy/Hard)에 맞춰 설명 텍스트 갱신
-/// - Z/Enter: onSubmit, X/Esc: onCancel (각 항목에 MenuActionInvoker 필요)
-/// </summary>
 public class LevelPanelController : MonoBehaviour
 {
     [Header("좌→우 순서(Easy, Hard)")]

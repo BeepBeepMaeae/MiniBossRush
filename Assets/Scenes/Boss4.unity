@@ -285,8 +285,10 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   triggerRadius: 6
   dialogueLines:
-  - "\uB0B4\uAC00 \uADF8\uD1A0\uB85D \uC6D0\uD558\uB358 \uB85C\uBD07\uC744 \uC644\uC131\uD588\uB2E4!\n\uC790,
-    \uACF5\uACA9\uD574\uB77C! M.O.R.I.!!!"
+  - "\uC774 \uC55E\uC774 \uBC14\uB85C \uD751\uAE30\uC0AC \uB2D8\uC758 \uC2DC\uACF5\uAC04\uC774\uB2E4.\n\uD558\uC9C0\uB9CC
+    \uB0B4\uAC00 \uC788\uC73C\uB2C8 \uD751\uAE30\uC0AC \uB2D8\uC744 \uC54C\uD604\uD560
+    \uC218\uB294 \uC5C6\uC744 \uAC83\uC774\uB2E4."
+  - "\uC790, \uACF5\uACA9\uD574\uB77C! M.O.R.I.!!!\n\uB140\uC11D\uC744 \uBC15\uC0B4\uB0B4\uBC84\uB824\uB77C!!!"
   dialogueManager: {fileID: 2769147264760041826}
   onComplete:
     m_PersistentCalls:
@@ -1452,6 +1454,81 @@ Transform:
   - {fileID: 2090404890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &948054491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948054492}
+  - component: {fileID: 948054494}
+  - component: {fileID: 948054493}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &948054492
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948054491}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5.4874997, y: 30.35133, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3301111213786571239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 646, y: 940}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &948054493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948054491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -3727960535020349654, guid: cd91583d8ab39df428d8381be748464b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &948054494
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948054491}
+  m_CullTransparentMesh: 1
 --- !u!1 &973445952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,9 +3140,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6067878415633572232, guid: cc1d137fe50380641a0b9da95f07c781, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7756263852282279047, guid: cc1d137fe50380641a0b9da95f07c781, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 948054492}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1d137fe50380641a0b9da95f07c781, type: 3}
+--- !u!224 &3301111213786571239 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7756263852282279047, guid: cc1d137fe50380641a0b9da95f07c781, type: 3}
+  m_PrefabInstance: {fileID: 3301111213786571238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3426701333571865465 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7034141361389901320, guid: cc1d137fe50380641a0b9da95f07c781, type: 3}
@@ -3600,7 +3685,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6478537645092206431, guid: 532586d00aa10fe4e96401d596ecad05, type: 3}
       propertyPath: deathDialogueLines.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478537645092206431, guid: 532586d00aa10fe4e96401d596ecad05, type: 3}
+      propertyPath: 'deathDialogueLines.Array.data[0]'
+      value: "\uC774\uB7F4\uC218\uAC00 ... \uB0B4 \uBC1C\uBA85\uD488\uC774 ..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478537645092206431, guid: 532586d00aa10fe4e96401d596ecad05, type: 3}
+      propertyPath: 'deathDialogueLines.Array.data[1]'
+      value: "\uD751\uAE30\uC0AC \uB2D8 ... \uC8C4\uC1A1\uD569\uB2C8\uB2E4 ...\n\uB140\uC11D\uC744
+        \uB9C9\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4 ..."
       objectReference: {fileID: 0}
     - target: {fileID: 8172915763941876316, guid: 532586d00aa10fe4e96401d596ecad05, type: 3}
       propertyPath: hpBar

@@ -6,11 +6,11 @@ using UnityEngine.Audio;
 
 public class ConfirmNavController : MonoBehaviour
 {
-    [Header("좌→우 순서로 항목을 넣으세요 (예, 아니오)")]
+    [Header("좌→우 순서로")]
     public List<Selectable> items = new();
 
     [Header("선택 하이라이트(오버레이)")]
-    [Tooltip("선택된 항목 위에 겹칠 Image. 원하는 Sprite를 지정하세요.")]
+    [Tooltip("선택된 항목 위에 겹칠 Image")]
     public Image selectionOverlay;
     public Vector2 overlayPadding = Vector2.zero;
 
@@ -23,7 +23,7 @@ public class ConfirmNavController : MonoBehaviour
     // ───────────── SFX ─────────────
     [Header("SFX")]
     public AudioMixerGroup sfxGroup;
-    public AudioClip selectClip; // 확인 화면 선택: select.wav
+    public AudioClip selectClip;
     private AudioSource _sfx;
 
     int index = 0;
@@ -63,7 +63,6 @@ public class ConfirmNavController : MonoBehaviour
     {
         if (items.Count == 0) return;
 
-        // ✅ 좌우로만 이동 (↑/↓ 키는 무시)
         int move =
             (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) ? +1 :
             (Input.GetKeyDown(KeyCode.LeftArrow)  || Input.GetKeyDown(KeyCode.A)) ? -1 : 0;
@@ -125,7 +124,6 @@ public class ConfirmNavController : MonoBehaviour
         var targetRT  = s.transform as RectTransform;
         var overlayRT = selectionOverlay.rectTransform;
 
-        // 선택 항목의 "자식"으로 부착하여 정확히 덮음
         overlayRT.SetParent(targetRT, false);
 
         overlayRT.anchorMin = Vector2.zero;
@@ -147,13 +145,11 @@ public class ConfirmNavController : MonoBehaviour
 
     MenuActionInvoker FindNoInvoker()
     {
-        // 관례상 오른쪽(1)이 '아니오'라 가정
         if (items.Count > 1)
         {
             var inv = items[1] ? items[1].GetComponent<MenuActionInvoker>() : null;
             if (inv && inv.onCancel.GetPersistentEventCount() > 0) return inv;
         }
-        // 폴백: 첫 항목 중 Cancel 있는 Invoker
         foreach (var s in items)
         {
             var inv = s ? s.GetComponent<MenuActionInvoker>() : null;

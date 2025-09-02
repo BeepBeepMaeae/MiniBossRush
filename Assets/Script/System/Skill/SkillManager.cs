@@ -26,10 +26,10 @@ public class SkillManager : MonoBehaviour
     // ─────────────────────────────────────────────
     // 세션 간 선택 유지용(에디터 Play 동안 씬 리로드/이동해도 유지)
     // ─────────────────────────────────────────────
-    private static string s_SelectedSkillNameSession; // 마지막 선택 스킬 이름(세션)
+    private static string s_SelectedSkillNameSession; // 마지막 선택 스킬 이름
 
     // ─────────────────────────────────────────────
-    // 이벤트: 스킬이 트리거되면 알림 (튜토리얼에서 사용)
+    // 이벤트: 스킬이 트리거되면 알림
     // ─────────────────────────────────────────────
     public event System.Action<SkillSO> SkillTriggered;
 
@@ -94,7 +94,7 @@ public class SkillManager : MonoBehaviour
         ApplySessionSelectionIfAny(); // 세션 선택 우선
     }
 
-    /// <summary>아이콘 등 UI 갱신</summary>
+    /// 아이콘 등 UI 갱신
     private void UpdateUI()
     {
         if (slot != null)
@@ -105,7 +105,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    /// <summary>현재 선택 스킬 발동(실제 효과 실행)</summary>
+    /// 현재 선택 스킬 발동(실제 효과 실행)
     public void TriggerCurrentSkill()
     {
         if (skills.Count == 0) return;
@@ -118,11 +118,11 @@ public class SkillManager : MonoBehaviour
         SkillTriggered?.Invoke(cur);
     }
 
-    /// <summary>현재 선택된 SkillSO</summary>
+    /// 현재 선택된 SkillSO
     public SkillSO CurrentSkill =>
         skills.Count > 0 ? skills[currentIndex] : null;
 
-    /// <summary>다음 스킬로 전환(+ SFX)</summary>
+    /// 다음 스킬로 전환
     public void NextSkill()
     {
         if (skills.Count <= 1) return;
@@ -141,10 +141,8 @@ public class SkillManager : MonoBehaviour
     public IReadOnlyList<SkillSO> Skills => skills;
     public int CurrentIndex => currentIndex;
 
-    /// <summary>
     /// 저장/씬전환 시스템이 한 번에 주입할 때 사용.
     /// resetCooldowns=true면 쿨타임 초기화.
-    /// </summary>
     public void InitializeFrom(IEnumerable<SkillSO> newSkills, int index, bool resetCooldowns)
     {
         skills.Clear();
@@ -161,7 +159,7 @@ public class SkillManager : MonoBehaviour
 
         UpdateUI();
 
-        // 세션에 마지막 선택 스킬명이 남아있으면 그걸로 '다시' 맞춰준다.
+        // 세션에 마지막 선택 스킬명이 남아있으면 그걸로 다시 맞춰준다.
         ApplySessionSelectionIfAny();
     }
 

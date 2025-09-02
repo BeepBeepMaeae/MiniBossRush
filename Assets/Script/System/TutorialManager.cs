@@ -1,4 +1,3 @@
-// Assets/Scripts/System/TutorialManager.cs
 using System;
 using System.Collections;
 using UnityEngine;
@@ -75,7 +74,7 @@ public class TutorialManager : MonoBehaviour
 
     void ShowInstruction(int step)
     {
-        // 하드 모드에서는 '아이템 단계(5)'만 스킵, '스킬 단계(4)'는 진행
+        // 하드 모드에서는 아이템 단계(5)만 스킵
         if (DifficultyManager.IsHardMode && step == 5)
         {
             ShowFinalAdviceAndFinish();
@@ -118,7 +117,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
 
-            case 4: // 스킬 사용 가이드 — 하드 모드에서도 진행
+            case 4: // 스킬 사용 가이드
                 StartCoroutine(RunSkillUseGuide());
                 break;
 
@@ -186,7 +185,6 @@ public class TutorialManager : MonoBehaviour
         var ds = dialogueSteps[step];
         dialogueManager.BeginDialogue(ds.completion, () =>
         {
-            // (변경) 하드 모드에서 3단계(공격) 완료 시 스킵하지 않고 4단계(스킬)로 진행
             currentStep = step + 1;
             if (currentStep < dialogueSteps.Length)
                 ShowInstruction(currentStep);
@@ -195,12 +193,6 @@ public class TutorialManager : MonoBehaviour
         });
     }
 
-    /// <summary>
-    /// 스킬 사용 가이드:
-    /// - 단계 진입 대사 종료 직후 스킬 2개 지급(+팝업)
-    /// - 플레이어 SP를 풀로 회복
-    /// - 둘 중 아무 스킬이나 1회 사용하면 완료
-    /// </summary>
     IEnumerator RunSkillUseGuide()
     {
         // 지급(중복 방지)
@@ -250,17 +242,15 @@ public class TutorialManager : MonoBehaviour
         bool done = false;
         try
         {
-            // 존재하는 프로젝트에선 아래 API가 팝업을 띄우며 저장까지 수행합니다.
             SkillGrantAPI.Acquire(so, persistNow: true, showPopup: true);
             done = true;
         }
-        catch { /* API 미존재 시 무시 */ }
+        catch {  }
 
         if (!done && skillManager != null)
         {
-            // 폴백: 런타임 리스트에 추가(+UI 갱신)
+            // 폴백: 런타임 리스트에 추가
             skillManager.AddSkill(so);
-            // 팝업은 없지만 튜토리얼 진행에는 문제 없음
         }
     }
 
@@ -296,7 +286,7 @@ public class TutorialManager : MonoBehaviour
     // ─────────────────────────────────────────────────────────
     void ShowFinalAdviceAndFinish()
     {
-        // 5단계 완료 대사를 "마지막 조언"으로 간주
+        // 5단계 완료 대사를 마지막 조언으로 간주
         string[] finalAdvice = (dialogueSteps != null && dialogueSteps.Length > 5)
             ? dialogueSteps[5].completion
             : null;

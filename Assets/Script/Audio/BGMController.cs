@@ -1,9 +1,7 @@
 using UnityEngine;
 
-/// <summary>
 /// 씬 루트에 두고, 씬 진입 시 BGM을 재생.
-/// AudioManager가 존재하지 않으면 자동 생성 가능(선택)
-/// </summary>
+/// AudioManager가 존재하지 않으면 자동 생성 가능
 public class BGMController : MonoBehaviour
 {
     public AudioClip bgm;

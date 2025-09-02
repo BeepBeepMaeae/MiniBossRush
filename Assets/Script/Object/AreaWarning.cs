@@ -40,9 +40,7 @@ public class AreaWarning : MonoBehaviour
         var c2 = sr.color; c2.a = targetAlpha; sr.color = c2;
     }
 
-    /// <summary>
     /// 경고 연출: 페이드인 → 유지(hold) → 페이드아웃
-    /// </summary>
     public IEnumerator Play(float hold, float targetAlpha, float fadeIn = 0.15f, float fadeOut = 0.1f)
     {
         yield return FadeTo(targetAlpha, fadeIn);

@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
 /// 버튼/이벤트에서 쉽게 SFX를 울리기 위한 컴포넌트
-/// - 직접 클립 or 키(AudioBank) 두 방식 지원
-/// - UI 버튼의 OnClick, MenuActionInvoker의 onSubmit/onCancel에 연결하여 사용
-/// </summary>
+/// 직접 클립 or AudioBank
 public class SfxPlayer : MonoBehaviour
 {
     [Header("직접 클립")]

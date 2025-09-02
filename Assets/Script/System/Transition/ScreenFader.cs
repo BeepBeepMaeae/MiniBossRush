@@ -13,8 +13,8 @@ public class ScreenFader : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Bootstrap()
     {
-        // 필요 시 첫 접근에서 생성되도록 함. (자동 생성은 여기선 수행하지 않음)
-        // 최종 보스에서 호출 시 자동 생성됩니다.
+        // 필요 시 첫 접근에서 생성되도록 함
+        // 최종 보스에서 호출 시 자동 생성
     }
 
     void Awake()
@@ -69,7 +69,7 @@ public class ScreenFader : MonoBehaviour
         if (to <= 0f) _image.enabled = false;
     }
 
-    // 외부 호출용 (다른 코루틴에서 yield return 가능)
+    // 외부 호출용
     public static IEnumerator FadeOut(float duration)
     {
         Ensure();

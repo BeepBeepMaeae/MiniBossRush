@@ -18,14 +18,14 @@ public abstract class SkillSO : ScriptableObject
 
     public bool IsOnCooldown => Time.time < lastUseTime + cooldown;
 
-    /// <summary>외부에서 부르는 API</summary>
+    /// 외부에서 부르는 API
     public void Trigger(GameObject user)
     {
         lastUseTime = Time.time;
         Execute(user);
     }
 
-    /// <summary>플레이 시작이나 에디터 리로드 시 호출해서 쿨다운을 초기화</summary>
+    /// 플레이 시작이나 에디터 리로드 시 호출해서 쿨다운을 초기화
     public void ResetCooldown()
     {
         lastUseTime = -cooldown;

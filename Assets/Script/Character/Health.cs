@@ -154,9 +154,7 @@ public class Health : MonoBehaviour
         DeathManager.Instance.StartDeathSequence();
     }
 
-    /// <summary>
     /// 최대 체력 증가 + 현 체력·슬라이더 동기화
-    /// </summary>
     public void AddMaxHp(float amount)
     {
         // 하드 모드 플레이어: 최대체력 증가 불가

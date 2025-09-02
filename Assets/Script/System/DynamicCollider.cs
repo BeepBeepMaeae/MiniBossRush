@@ -63,7 +63,7 @@ public class DynamicCollider : MonoBehaviour
                     _points[k] = p;
                 }
 
-                // 한 축만 반전하면(짝수번이 아닌 경우) 폴리곤의 회전 방향이 뒤바뀌므로 순서를 뒤집어 준다.
+                // 한 축만 반전하면(짝수번이 아닌 경우) 폴리곤의 회전 방향이 뒤바뀌므로 순서를 뒤집어줌
                 if (doFlipX ^ doFlipY)
                     _points.Reverse();
             }

@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: SeonOMeoRing
-  productName: SeonOMeoRing
+  companyName: MiniBossRush
+  productName: MiniBossRush
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -291,7 +291,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d740fda475ad3b14f8386d34d9058f08, type: 3}
+      m_Icon: {fileID: 2800000, guid: 4d6dedf8f078a9b4f8e52990c8b86927, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

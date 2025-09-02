@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uACF5\uC911 \uC810\uD504"
   m_EditorClassIdentifier: 
   title: "\uACF5\uC911 \uC810\uD504"
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 5772590042218429284, guid: 1a4db2d0d52642e40a1558cbf9b39116, type: 3}
   requireAllMaxToAppear: 0
   currentLevel: 0
   levels:

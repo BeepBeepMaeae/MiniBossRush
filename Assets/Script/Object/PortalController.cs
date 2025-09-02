@@ -5,7 +5,7 @@ using UnityEngine;
 public class PortalController : MonoBehaviour
 {
     [Header("이동할 씬 이름")]
-    [Tooltip("전환할 씬의 이름을 입력하세요 (Build Settings에 추가되어 있어야 합니다)")]
+    [Tooltip("전환할 씬의 이름을 입력")]
     public string sceneName;
 
     [Header("SFX")]
@@ -52,9 +52,6 @@ public class PortalController : MonoBehaviour
         // 포탈 SFX
         if (AudioManager.Instance != null && sfxUse != null)
             AudioManager.Instance.PlaySFX(sfxUse);
-
-        // (선택) 간단한 연출 대기 가능
-        // yield return new WaitForSeconds(0.1f);
 
         // 씬 전환
         SceneTransitionManager.Instance.TransitionTo(sceneName);

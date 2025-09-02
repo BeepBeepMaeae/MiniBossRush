@@ -11,17 +11,17 @@ public class MainMenuController : MonoBehaviour
     public List<Selectable> mainMenuItems;
 
     [Header("Panels")]
-    public GameObject confirmPanel;   // 내부에는 ConfirmNavController가 붙어 있어야 함
+    public GameObject confirmPanel;
 
-    [Header("ConfirmPanel 내부 Selectable (Button 아님)")]
+    [Header("ConfirmPanel 내부 Selectable")]
     public Selectable confirmYesItem;
     public Selectable confirmNoItem;
 
     // ───────── 난이도 선택 UI 추가 ─────────
     [Header("Difficulty Panel (좌→우: Easy, Hard)")]
-    public GameObject difficultyPanel;     // 내부에 ConfirmNavController 사용 권장
-    public Selectable diffEasyItem;        // Easy 쪽 Selectable (MenuActionInvoker 필요)
-    public Selectable diffHardItem;        // Hard 쪽 Selectable (MenuActionInvoker 필요)
+    public GameObject difficultyPanel;     // 내부에 ConfirmNavController 사용
+    public Selectable diffEasyItem;
+    public Selectable diffHardItem;
 
     [Header("선택 하이라이트(오버레이) - 메인 메뉴")]
     public Image selectionOverlay;
@@ -37,13 +37,12 @@ public class MainMenuController : MonoBehaviour
     // ───────────── SFX ─────────────
     [Header("SFX")]
     public AudioMixerGroup sfxGroup;
-    public AudioClip moveClip;   // menumove.wav
-    public AudioClip selectClip; // select.wav
+    public AudioClip moveClip;
+    public AudioClip selectClip;
     private AudioSource _sfx;
 
     int index = 0; // 메인 메뉴 인덱스
 
-    // Confirm/Difficulty용 Invoker 캐시
     MenuActionInvoker yesInvoker;
     MenuActionInvoker noInvoker;
     MenuActionInvoker easyInvoker;
@@ -61,7 +60,7 @@ public class MainMenuController : MonoBehaviour
             selectionOverlay.gameObject.SetActive(false);
         }
 
-        // SFX AudioSource 준비 (2D, Mixer=SFX)
+        // SFX AudioSource 준비
         _sfx = gameObject.AddComponent<AudioSource>();
         _sfx.playOnAwake = false;
         _sfx.loop = false;
@@ -76,7 +75,7 @@ public class MainMenuController : MonoBehaviour
 
         StartCoroutine(CoFadeInAtMenuStart());
 
-        // Load Game 가능 여부 (Selectable 공통 프로퍼티로 처리)
+        // Load Game 가능 여부
         if (mainMenuItems.Count >= 1 && mainMenuItems[0] != null)
             mainMenuItems[0].interactable = SaveSystem.HasSave();
 
@@ -144,7 +143,7 @@ public class MainMenuController : MonoBehaviour
         if ((confirmPanel && confirmPanel.activeSelf) || (difficultyPanel && difficultyPanel.activeSelf))
             return;
 
-        // 메인 메뉴용 ↑/↓ 이동
+        // 메인 메뉴용
         int vMove =
             (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ? +1 :
             (Input.GetKeyDown(KeyCode.UpArrow)   || Input.GetKeyDown(KeyCode.W)) ? -1 : 0;
@@ -218,7 +217,7 @@ public class MainMenuController : MonoBehaviour
         switch (index)
         {
             case 0: OnClick_LoadGame(); break;
-            case 1: OnClick_NewGame();  break; // 확인창 먼저
+            case 1: OnClick_NewGame();  break;
             case 2: OnClick_Quit();     break;
         }
     }
@@ -273,7 +272,7 @@ public class MainMenuController : MonoBehaviour
         SaveSystem.Delete();
         if (confirmPanel) confirmPanel.SetActive(false);
 
-        // ▼ 난이도 패널 열기
+        // 난이도 패널 열기
         OpenDifficultyPanel();
     }
 
@@ -331,7 +330,6 @@ public class MainMenuController : MonoBehaviour
     {
         DifficultyManager.Ensure().SetMode(mode);
 
-        // (신규) 난이도 선택 직후 즉시 저장하여 이후 로드/크래시에도 난이도 유지
         var seed = new SaveData
         {
             difficulty     = mode,

@@ -1,16 +1,12 @@
 using UnityEngine;
 
-/// <summary>
-/// 바닥 표면에 y를 고정하여 좌/우로 왕복 이동합니다. (Rigidbody2D 없음)
-/// - 매 프레임 현재 x 위치의 바닥 높이를 샘플링해 정확히 붙습니다.
-/// - 전방 벽/엣지 감지로 방향 반전.
-/// - lifetime(초) 후 자동 파괴(0이면 무제한).
-/// </summary>
+/// - 전방 벽/엣지 감지로 방향 반전
+/// - lifetime(초) 후 자동 파괴
 [RequireComponent(typeof(Collider2D))]
 public class LemonCrawlerNRB : MonoBehaviour
 {
     [Header("지면/벽 체크")]
-    public LayerMask groundMask;                 // 미설정 시 "Ground" 자동
+    public LayerMask groundMask;
     [Tooltip("수직으로 아래 레이캐스트하는 높이(샘플 시작 높이)")]
     public float stickProbeHeight = 3f;
     [Tooltip("지면 위로 띄우는 얇은 여유값(들썩임 방지)")]
@@ -24,7 +20,7 @@ public class LemonCrawlerNRB : MonoBehaviour
     public float speed = 3f;
 
     [Header("수명(초)")]
-    public float lifetime = 0f;                  // 0이면 무제한
+    public float lifetime = 0f;
 
     private int dir = -1;       // 기본 왼쪽
     private Collider2D col;

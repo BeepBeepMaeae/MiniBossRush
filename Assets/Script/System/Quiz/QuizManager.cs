@@ -17,10 +17,10 @@ public class QuizManager : MonoBehaviour
     [Header("제한 시간(초)")]
     public float timeLimit = 10f;
 
-    [Header("(선택) 퀴즈를 올릴 타깃 캔버스")]
+    [Header("퀴즈를 올릴 타깃 캔버스")]
     public Canvas targetCanvas; // 지정 안 하면 자동 탐색
 
-    // ★ 보스가 구독하는 전역 이벤트(정답:true / 오답:false)
+    // 보스가 구독하는 전역 이벤트(정답:true / 오답:false)
     public static event System.Action<bool> OnAnyQuizFinished;
 
     void Start()
@@ -100,8 +100,7 @@ public class QuizManager : MonoBehaviour
     // ───────────────────────────────────────────────
     void OnQuizFinished(bool correct)
     {
-        // ★ 오답 시 플레이어에게 직접 대미지 주지 않음.
-        //    대신 보스가 전역 이벤트를 받아 즉사 연출을 실행한다.
+        // 오답 시 플레이어에게 직접 대미지 주지 않음.
         OnAnyQuizFinished?.Invoke(correct);
 
         SystemManager.Instance.ChangeState(SystemManager.GameState.Playing);

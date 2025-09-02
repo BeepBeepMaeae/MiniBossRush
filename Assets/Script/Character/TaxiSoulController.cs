@@ -2,10 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// 택시 기사 영혼 컨트롤러: 쓰레기 투척과 미니언 소환 패턴을 병렬 실행하고,
-/// 모두 완료되면 IsCompleted 플래그를 세팅합니다.
-/// </summary>
+/// 택시 기사 영혼 컨트롤러: 쓰레기 투척과 미니언 소환 패턴을 병렬 실행
 public class TaxiSoulController : MonoBehaviour
 {
     [Header("Movement")]
@@ -47,9 +44,7 @@ public class TaxiSoulController : MonoBehaviour
         halfW = halfH * cam.aspect;
     }
 
-    /// <summary>
     /// 보스가 호출: 초기 위치 설정 후 패턴 실행
-    /// </summary>
     public void Initialize(Vector3 spawnPos)
     {
         transform.position = spawnPos;
@@ -71,7 +66,6 @@ public class TaxiSoulController : MonoBehaviour
         IsCompleted = true;
     }
 
-    // 쓰레기 투척 패턴: 지정 위치(sectionRightPoints[0])로 이동 후, 한 번에 trashCountPerType개 투척
     private IEnumerator TrashThrowPattern(System.Action onComplete)
     {
         transform.position = sectionRightPoints[0].position;

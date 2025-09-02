@@ -2,11 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// BossKJW4SoulController
-/// - BossController4의 오렌지(탱탱볼) 모방
-/// - 배치된 위치 유지. Initialize(...) → 실행 → IsCompleted
-/// </summary>
+/// BossController4의 오렌지(탱탱볼) 모방
 public class BossKJW4SoulController : MonoBehaviour
 {
     [Header("오렌지(탱탱볼)")]
@@ -55,7 +51,7 @@ public class BossKJW4SoulController : MonoBehaviour
                 ob.initialSpeedRangeY = orangeInitSpeedY;
                 ob.lifetime           = orangeLifetime;
 
-                // ▶ 오렌지 발사 SFX(개별)
+                // 오렌지 발사 SFX(개별)
                 PlaySfx2D(sfxShoot);
 
                 if (shootRight) ob.LaunchRightward();

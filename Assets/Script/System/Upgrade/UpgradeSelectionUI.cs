@@ -6,19 +6,19 @@ using System.Collections.Generic;
 
 public class UpgradeSelectionUI : MonoBehaviour
 {
-    [Header("옵션 셀 표시 요소 (Inspector에서 같은 인덱스로 매핑)")]
+    [Header("옵션 셀 표시 요소")]
     public Image[] iconImages;
     public Text[]  nameTexts;
     public Text[]  descTexts;
     public Text[]  lvlTexts;
 
-    [Header("옵션 셀의 Selectable (각 옵션 루트에 달린 Button/Selectable)")]
+    [Header("옵션 셀의 Selectable")]
     public Selectable[] optionSelectables;
 
     [Header("상단/타이틀 및 하단바 Selectable")]
     public Text titleText;
-    public Selectable skipOneSelectable; // [건너뛰기]
-    public Selectable skipAllSelectable; // [모두 건너뛰기]
+    public Selectable skipOneSelectable; // 건너뛰기
+    public Selectable skipAllSelectable; // 모두 건너뛰기
 
     [Header("Selection Overlay(오버레이로 하이라이트)")]
     public Sprite selectionSprite;
@@ -134,7 +134,7 @@ public class UpgradeSelectionUI : MonoBehaviour
                 }
                 else
                 {
-                    optionIndex = Loop(optionIndex + v, optCount); // ↑ 래핑 허용
+                    optionIndex = Loop(optionIndex + v, optCount); // 래핑 허용
                     RefreshOverlay();
                 }
             }

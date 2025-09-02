@@ -603,10 +603,10 @@ MonoBehaviour:
   layerA: {fileID: 310754752}
   layerB: {fileID: 829999905}
   slides:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  openingBgm: {fileID: 0}
+  - {fileID: -1030037895453144996, guid: 76ce757f125904147aed814cab9a02db, type: 3}
+  - {fileID: 293246367704136912, guid: 24ef78d9a2268f44dae96d7f97b54055, type: 3}
+  - {fileID: -5053888924481470669, guid: 7ac4cfd74d85aa448988dccfc362be9f, type: 3}
+  openingBgm: {fileID: 8300000, guid: 3827ad054610baa4a83c0faef5ce75fb, type: 3}
   loopBgm: 1
   bgmFadeIn: 0.8
   nextSceneName: Tutorial

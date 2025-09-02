@@ -58,9 +58,6 @@ public static class SaveSystem
         }
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // 내부: 기존 저장과 병합(다운그레이드/소실 방지)
-    // ─────────────────────────────────────────────────────────────
     private static SaveData MergeWithExisting(SaveData incoming)
     {
         var existing = Load();
@@ -72,7 +69,7 @@ public static class SaveSystem
         if (string.IsNullOrEmpty(incoming.lastSpawnPointId))
             incoming.lastSpawnPointId = existing.lastSpawnPointId;
 
-        // 2) 업그레이드(레벨형): title 기준으로 "최대 레벨" 보존
+        // 2) 업그레이드(레벨형): title 기준으로 최대 레벨 보존
         var mergedUpgrades = new Dictionary<string, int>(StringComparer.Ordinal);
         if (existing.upgrades != null)
         {

@@ -1,4 +1,3 @@
-// Assets/Scripts/System/Upgrade/BulletManager.cs
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]

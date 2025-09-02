@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 6dcc202faf133da479698f21781d3e2a
   - enabled: 1
     path: Assets/Scenes/Opening.unity
-    guid: 48226a251dc8c67479e5c5f5b1008e4b
+    guid: 44ca11ae9d640114386584f89451e10f
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 275fbc2aecaacc341ad4f142a5e5b403
@@ -31,10 +31,7 @@ EditorBuildSettings:
     guid: 92145ce955bd2814dbaf6f91fba32e9d
   - enabled: 1
     path: Assets/Scenes/Ending.unity
-    guid: 572ac47010cca0a4a9872521adf053cc
-  - enabled: 1
-    path: Assets/Scenes/HardEnding.unity
-    guid: e67623c5adff6864bbd04f3a03513ec4
+    guid: f468c930ee8815a409bfebf2caab064b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uD761\uD608"
   m_EditorClassIdentifier: 
   title: "\uD761\uD608"
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 3309318293321431029, guid: 9c6aaf5e45e22f84b8cd50738a3afab4, type: 3}
   requireAllMaxToAppear: 0
   currentLevel: 0
   levels:

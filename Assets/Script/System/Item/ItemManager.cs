@@ -1,8 +1,3 @@
-// ItemManager.cs - 아이템 사용 및 UI 제어
-using UnityEngine;
-using UnityEngine.UI;
-
-// ItemManager.cs - 아이템 사용 및 UI 제어 (아이콘 고정)
 using UnityEngine;
 using UnityEngine.UI;
 
