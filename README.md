@@ -20,7 +20,7 @@ Play: https://drive.google.com/file/d/13nlBYsek6RN5tiDXUzAm6YV2Exrimgk-/view?usp
 - 스킬 사용: Ctrl</br>
 
 **플랫폼**</br>
-- PC
+PC
 
 **제작**</br>
 Unity
