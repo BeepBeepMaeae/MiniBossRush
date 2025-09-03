@@ -13,6 +13,7 @@ Play: https://drive.google.com/file/d/13nlBYsek6RN5tiDXUzAm6YV2Exrimgk-/view?usp
 **조작**</br>
 - 이동: 방향키</br>
 - 점프: Z</br>
+- 점프: X</br>
 - 대쉬/구르기: Shift</br>
 - 무기 전환: 1/2번 키</br>
 - 아이템 사용: 3/4번 키</br>
