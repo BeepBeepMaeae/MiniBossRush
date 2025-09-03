@@ -24,3 +24,6 @@ PC
 
 **제작**</br>
 Unity
+
+**제작후기**</br>
+Blog: https://beepbeepmaeae.tistory.com/7
