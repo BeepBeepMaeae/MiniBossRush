@@ -1,7 +1,7 @@
 # Personal Project: MiniBossRush
 
 **다운로드 링크**</br>
-Play: https://drive.google.com/file/d/13nlBYsek6RN5tiDXUzAm6YV2Exrimgk-/view?usp=drive_link
+Play: [https://drive.google.com/file/d/13nlBYsek6RN5tiDXUzAm6YV2Exrimgk-/view?usp=drive_link]
 
 **게임 설명**</br>
 **MiniBossRush**는 *I Wanna Be the Guy*, *CupHead*와 비슷한 2D 액션 플랫포머 게임입니다.
