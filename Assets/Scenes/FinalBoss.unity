@@ -3070,7 +3070,7 @@ PrefabInstance:
     - target: {fileID: 7517311615496616414, guid: 9fa0781e9fdaa8b41ab8a6c509786854, type: 3}
       propertyPath: 'deathDialogueLines.Array.data[0]'
       value: "\uADF8\uB798 ... \uB098\uC758 \uD328\uBC30\uB2E4.\n\uBAA8\uB4E0 \uD798\uACFC
-        \uAD8C\uD55C\uC744 \uB108\uC5D0\uAC8C \uB118\uAE30\uBA70 ...\n"
+        \uAD8C\uD55C\uC744 \uB108\uC5D0\uAC8C \uB118\uAE30\uB9C8 ..."
       objectReference: {fileID: 0}
     - target: {fileID: 7517311615496616414, guid: 9fa0781e9fdaa8b41ab8a6c509786854, type: 3}
       propertyPath: 'deathDialogueLines.Array.data[1]'

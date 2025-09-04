@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &45213408
+--- !u!1 &261946661
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,8 +127,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 45213410}
-  - component: {fileID: 45213411}
+  - component: {fileID: 261946663}
+  - component: {fileID: 261946662}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -136,37 +136,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &45213410
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45213408}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1606, y: 444, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &45213411
+--- !u!114 &261946662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45213408}
+  m_GameObject: {fileID: 261946661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad34522598f68b749a6f4af748e18958, type: 3}
+  m_Script: {fileID: 11500000, guid: f04f7b1c43bed21458b14319129ed688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: 8bc6e59cd43fcfe40970dad1f79e1038, type: 3}
-  playOnEnable: 1
-  loop: 1
-  fadeIn: 0.8
+  masterMixer: {fileID: 24100000, guid: e9ca82510fa88424bbe188f21b82c7f5, type: 2}
+  bgmGroup: {fileID: -3577904549598662210, guid: e9ca82510fa88424bbe188f21b82c7f5, type: 2}
+  sfxGroup: {fileID: -6568109186972787620, guid: e9ca82510fa88424bbe188f21b82c7f5, type: 2}
+  bgmSources: 2
+  defaultBgmFade: 0.8
+  sfxPoolSize: 12
+  sfxDefaultVolume: 1
+  sfxPitchJitter: {x: 0.98, y: 1.02}
+  sfxBank: {fileID: 0}
+--- !u!4 &261946663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261946661}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 964.6723, y: 428.98276, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +585,11 @@ MonoBehaviour:
   layerB: {fileID: 704032303}
   slideHoldSeconds: 6
   fadeSeconds: 3
+  endingBgm: {fileID: 8300000, guid: 8bc6e59cd43fcfe40970dad1f79e1038, type: 3}
+  bgmStartDelay: 1.2
+  bgmFadeInSeconds: 1
+  bgmLoop: 1
+  playBgmOnStart: 1
   nextSceneName: MainMenu
 --- !u!4 &803418909
 Transform:
@@ -787,4 +797,4 @@ SceneRoots:
   - {fileID: 360309777735416077}
   - {fileID: 1025004096}
   - {fileID: 803418909}
-  - {fileID: 45213410}
+  - {fileID: 261946663}

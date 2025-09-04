@@ -2372,7 +2372,7 @@ MonoBehaviour:
   diffHardItem: {fileID: 570765696}
   selectionOverlay: {fileID: 1400052505}
   overlayPadding: {x: 0, y: 0}
-  tutorialSceneName: Opening
+  tutorialSceneName: Tutorial
   fallbackStartScene: Tutorial
   menuFadeInDuration: 0.8
   sfxGroup: {fileID: -6568109186972787620, guid: e9ca82510fa88424bbe188f21b82c7f5, type: 2}
